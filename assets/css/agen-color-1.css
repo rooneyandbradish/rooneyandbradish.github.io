@@ -3,7 +3,6 @@ a:focus,
 .primary,
 #main-nav .nav .active > a,
 #main-nav .nav a:hover,
-.features .icon,
 .features .media:hover h4,
 .member-details .title,
 .project-item .hover-mask .fa:hover,
@@ -22,6 +21,11 @@ a:focus,
 .btn.white.transparent:active
 {
 	color:#0C7ABF;
+}
+
+.features .icon
+{
+	color:white;
 }
 
 #page-loader span,
