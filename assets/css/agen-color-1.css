@@ -18,7 +18,8 @@ a:focus,
 .btn.white,
 .btn.white:focus,
 .btn.white.transparent:hover,
-.btn.white.transparent:active
+.btn.white.transparent:active,
+.boxed-banner
 {
 	color:#0C7ABF;
 }

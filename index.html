@@ -101,13 +101,12 @@
 
 					<div class="row">
 
-						<div class="col-xs-4 col-xs-offset-8">
+						<div class="col-md-4 col-md-offset-8 hidden-xs">
 							<h2>Save the date</h2>
 							<div class = "row">
 									<h3>We're getting married in Shropshire on 2nd December and we'd love you to be there to celebrate it with us.</h3>
 							</div>
-
-				</div>
+						</div>
 
 			</div>
 
@@ -120,26 +119,31 @@
 		=============================================== -->
 		<section id="location" class="white-bg padding-top-bottom">
 						<div class="container features">
-							<h2 class="section-title"><span class = "primary">Where</span> and <span class="primary">When</span>?</h2>
-							<div class="banner-text dark full animation fadeIn animated" style="visibility: visible;">
+							<div class="row">
+<!-- SECTION TITLE -->
+							                    	<div class="col-md-12 text-center">
+							                        	<div class="banner-text">
 
-								<div class="row">
-									<div class="col-md-4">
-										<h3>1-3 December 2017</h3>
-									</div>
-									<div class="col-md-4">
-										<div class="border-column">
-											<h3>Ceremony 1pm 2nd December</h3>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<h3>Wilderhope Manor, Longville in the Dale</h3>
-									</div>
+							                                  <div class="row">
+							                                		<div class="col-md-4">
+							                                        	<h3>2<sup>ND</sup> DECEMBER</h3>
+							                                        </div>
+							                                        <div class="col-md-4">
+							                                        	<div class="banner-column">
+							                                        		<h3>HALF PAST ONE</h3>
+							                                          </div>
+							                                        </div>
+							                                        <div class="col-md-4">
+							                                        	<h3>WILDERHOPE MANOR</h3>
+							                                        </div>
 
-								</div>
+							                                  </div>
 
 
-							</div>
+							                            </div>
+
+							                        </div>
+							                   </div>
 
 							<div class="row">
 								<div class="col-md-6">
@@ -181,7 +185,7 @@
 								<div class="col-md-6">
 
 									<div id="gmar-wrapper">
-										<div id='map'></div>
+										<div id='gmap'></div>
 										<a id="map-address" target="_blank" href="https://goo.gl/maps/ScCJLw2mfhJ2">Wilderhope Manor, Longville in the Dale</a>
 									</div>
 
@@ -249,6 +253,7 @@
 
 		<script src="assets/js/libs/bootstrap.min.js"></script>
 		<script src='assets/js/jquery.easing.1.3.min.js'></script>
+		<script src="http://maps.google.com/maps/api/js"></script>
 		<script src="assets/js/lity.min.js"></script>
 		<script src='assets/js/jquery.flexslider.min.js'></script>
 		<script src='assets/js/parallax.min.js'></script>
@@ -270,23 +275,6 @@
 					'icon': 'assets/images/marker.png'
 				};
 
-		</script>
-
-		<script>
-		function initMap() {
-			var wilderhope = {lat: 52.5316742, lng: -2.674451};
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 4,
-				center: wilderhope
-			});
-			var marker = new google.maps.Marker({
-				position: wilderhope,
-				map: map
-			});
-		}
-		</script>
-		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 		</script>
 
 

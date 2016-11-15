@@ -141,6 +141,24 @@ a:focus,
     text-align: left;
 }
 
+.banner-text {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom:30px;
+  border-top : medium double #6a6a6a;
+  border-bottom: medium double #6a6a6a;
+}
+
+.banner-text h3{
+  margin-top : 20px;
+  margin-bottom : 20px;
+}
+
+.banner-column{
+  border-left : 1px solid #8b8b8b;
+  border-right : 1px solid #8b8b8b;
+}
+
 .flexslider {
     margin:0;
     padding:0;
