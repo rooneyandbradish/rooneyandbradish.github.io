@@ -1,25 +1,25 @@
 $(document).ready(function() {
-	
+
 	/*============================================
 	Page Preloader
 	==============================================*/
-	
+
 	$('#page-loader span').animate({'width':'100%'},10000);
-	
+
 	$(window).load(function(){
 		$('#page-loader span').stop().animate({'width':'100%'},500,function(){
 			$('#page-loader').fadeOut(500);
 		});
-		
-	});	
-	
-	
+
+	});
+
+
 	/*============================================
 	Header
 	==============================================*/
-	
+
 	var speed = $('.header-slider').data('speed') ? parseInt($('.header-slider').data('speed'),10) : 3000;
-	
+
 	$('.header-slider').flexslider({
 		animation: "fade",
 		directionNav: false,
@@ -31,13 +31,13 @@ $(document).ready(function() {
 		smoothHeight: false,
 		slideshow:false
 	});
-	
+
 	$(window).load(function(){
 		if($('.header-slider').length){
 			$('.header-slider').flexslider('play');
 		}
 	});
-	
+
 	/*============================================
 	Navigation Functions
 	==============================================*/
@@ -45,7 +45,7 @@ $(document).ready(function() {
 		$('#main-nav').removeClass('is-sticky');
 	}
 	else{
-		$('#main-nav').addClass('is-sticky');    
+		$('#main-nav').addClass('is-sticky');
 	}
 
 	$(window).scroll(function(){
@@ -53,10 +53,10 @@ $(document).ready(function() {
 			$('#main-nav').removeClass('is-sticky');
 		}
 		else{
-			$('#main-nav').addClass('is-sticky');    
+			$('#main-nav').addClass('is-sticky');
 		}
 	});
-	
+
 	/*============================================
 	ScrollTo Links
 	==============================================*/
@@ -65,26 +65,26 @@ $(document).ready(function() {
 		var target =$(this).attr('href');
 		$('html, body').stop().animate({scrollTop: $(target).offset().top}, 1600, 'easeInOutExpo',
 			function(){window.location.hash =target;});
-			
+
 		if ($('.navbar-collapse').hasClass('in')){
 			$('.navbar-collapse').removeClass('in').addClass('collapse');
 		}
 	});
-	
-	
+
+
 	/*============================================
 	Counters
 	==============================================*/
 	$('.counters').waypoint(function(){
 		$('.counter').each(count);
 	},{offset:'100%',triggerOnce:true});
-	
+
 	function count(options) {
 		var $this = $(this);
 		options = $.extend({}, options || {}, $this.data('countToOptions') || {});
 		$this.countTo(options);
 	}
-	
+
 	/*============================================
 	Project thumbs - Masonry
 	==============================================*/
@@ -105,17 +105,17 @@ $(document).ready(function() {
 			waypointsRefresh();
 		}
 	});
-	
+
 	/*============================================
 	Filter Projects
 	==============================================*/
 	$('#filter-works a').click(function(e){
 		e.preventDefault();
-		
+
 		if($('#project-preview').hasClass('open')){
 			closeProject();
 		}
-		
+
 		$('#filter-works li').removeClass('active');
 		$(this).parent('li').addClass('active');
 
@@ -138,7 +138,7 @@ $(document).ready(function() {
 			$(window).trigger('resize');
 		},500);
 	});
-	
+
 	/*============================================
 	Project Preview
 	==============================================*/
@@ -146,10 +146,10 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		var elem = $(this);
-		
+
 		if($('#project-preview').hasClass('open')){
 			$('#project-preview .container').animate({'opacity':0},300);
-			
+
 			setTimeout(function(){
 				$('#project-slider').flexslider('destroy');
 				buildProject(elem);
@@ -157,12 +157,12 @@ $(document).ready(function() {
 		}else{
 			buildProject(elem);
 		}
-		
-		
+
+
 	});
 
 	function buildProject(elem){
-	
+
 		var	title = elem.find('.project-title').text(),
 			descr = elem.find('.project-description').html(),
 			slidesHtml = '<ul class="slides">',
@@ -173,41 +173,41 @@ $(document).ready(function() {
 			slidesHtml = slidesHtml + '<li>'+elem.find('.project-description').data('video')+'</li>';
 			hasVideo = true;
 		}
-		
+
 		if(elem.find('.project-description').data('images')){
 			var	slides = elem.find('.project-description').data('images').split(',');
-			
+
 			for (var i = 0; i < slides.length; ++i) {
 				slidesHtml = slidesHtml + '<li><img src='+slides[i]+' alt=""></li>';
 			}
 		}
-		
+
 		slidesHtml = slidesHtml + '</ul>';
-		
+
 		$('#project-title').text(title);
 		$('#project-content').html(descr);
 		$('#project-slider').html(slidesHtml);
-		
+
 		openProject(hasVideo);
 	}
-	
+
 	function openProject(hasVideo){
-		
+
 		$('#project-preview').addClass('open');
-		
+
 		$('html, body').stop().animate({scrollTop: $('#filter-works').offset().top+50}, 600);
 		$('#project-preview').slideDown(400);
-		
+
 		setTimeout(function(){
-		
+
 			$('#project-slider').fitVids().flexslider({
 				prevText: '<i class="fa fa-angle-left"></i>',
 				nextText: '<i class="fa fa-angle-right"></i>',
 				animation: 'slide',
 				slideshowSpeed: 3000,
 				useCSS: true,
-				controlNav: true, 
-				pauseOnAction: false, 
+				controlNav: true,
+				pauseOnAction: false,
 				pauseOnHover: hasVideo ? false : true,
 				smoothHeight: false,
 				start: function(){
@@ -217,57 +217,58 @@ $(document).ready(function() {
 				}
 			});
 		},200)
-	
+
 		setTimeout(function(){
 			$(window).trigger('resize');
 		},800);
-		
+
 	}
-	
+
 	function closeProject(){
-	
+
 		$('#project-preview').removeClass('open');
 		$('#project-preview .container').animate({'opacity':0},300);
 		$('html, body').stop().animate({scrollTop: $('#filter-works').offset().top-110}, 600);
 		setTimeout(function(){
 			$('#project-preview').slideUp();
-				
+
 			$('#project-slider').flexslider('destroy');
 			$('#project-slider').empty();
-			
+
 			scrollSpyRefresh();
 			waypointsRefresh();
-			
+
 		},300);
-		
+
 		setTimeout(function(){
 			$(window).trigger('resize');
 		},800);
-		
+
 	}
-	
+
 	$('.close-preview').click(function(){
 		closeProject();
 	})
-	
+
 	/*============================================
 	Google Map
 	==============================================*/
-	
+
 	$(window).load(function(){
-	
+
 		if($('#gmap').length){
-		
-		
+
+
 			var map;
-			var mapstyles = [ { "stylers": [ { "saturation": -100 } ] } ];
-			
+			var mapstyles = []
+			//var mapstyles = [ { "stylers": [ { "saturation": 100 } ] } ];
+
 			var infoWindow = new google.maps.InfoWindow;
-			
+
 			var pointLatLng = new google.maps.LatLng(mapPoint.lat, mapPoint.lng);
 
-			var isDraggable = $('html').is('.touch') ? false : true; 
-			
+			var isDraggable = $('html').is('.touch') ? false : true;
+
 			var mapOptions = {
 				zoom: mapPoint.zoom,
 				center: pointLatLng,
@@ -284,30 +285,30 @@ $(document).ready(function() {
 				draggable:isDraggable,
 				styles: mapstyles
 			}
-			
+
 			map = new google.maps.Map(document.getElementById("gmap"), mapOptions);
-			
+
 			$('#gmap').waypoint(function(){
 				var marker = new google.maps.Marker({
-					position: pointLatLng, 
-					map: map, 
+					position: pointLatLng,
+					map: map,
 					icon: mapPoint.icon
 				});
-				
+
 				var mapLink = 'https://www.google.com/maps/preview?ll='+mapPoint.lat+','+mapPoint.lng+'&z=14&q='+mapPoint.mapAddress;
-				
+
 				google.maps.event.addListener(marker, 'click', function() {
 					window.open(mapLink,'_blank');
 				});
-				
+
 				marker.setAnimation(google.maps.Animation.DROP);
-				
+
 			},{offset:'50%',triggerOnce:true});
-			
+
 		}
-		
-	});		
-	
+
+	});
+
 	/*============================================
 	Placeholder Detection
 	==============================================*/
@@ -323,38 +324,38 @@ $(document).ready(function() {
 	$('.video-bg.load').each(function(){
 		var $this = $(this),
 			video = $this.data('video').split('.')[0];
-			
+
 		$('<source>').attr({type:'video/mp4',src:video+'.mp4'}).appendTo($this);
 		$('<source>').attr({type:'video/webm',src:video+'.webm'}).appendTo($this);
 		$('<source>').attr({type:'video/ogg; codecs=&quot;theora, vorbis&quot;',src:video+'.ogg'}).appendTo($this);
-		
+
 	})
-		
+
 	$(window).load(function(){
 		$('.video-bg').each(function(){
 			var $this = $(this),
 				video = $this.data('video').split('.')[0];
-				
+
 			$('<source>').attr({type:'video/mp4',src:video+'.mp4'}).appendTo($this);
 			$('<source>').attr({type:'video/webm',src:video+'.webm'}).appendTo($this);
 			$('<source>').attr({type:'video/ogg; codecs=&quot;theora, vorbis&quot;',src:video+'.ogg'}).appendTo($this);
-			
+
 		})
 	})
 	/*============================================
 	Resize Functions
 	==============================================*/
 	$(window).resize(function(){
-	
+
 		if($('#projects-container').length){
 			$('#projects-container').masonry('reload');
 		}
-		
+
 		scrollSpyRefresh();
 		waypointsRefresh();
-		
+
 	});
-	
+
 	/*============================================
 	Refresh scrollSpy function
 	==============================================*/
@@ -362,7 +363,7 @@ $(document).ready(function() {
 		setTimeout(function(){
 			$('body').scrollspy('refresh');
 		},1000);
-		
+
 	}
 
 	/*============================================
@@ -373,26 +374,26 @@ $(document).ready(function() {
 			$.waypoints('refresh');
 		},1000);
 	}
-	
+
 	/*============================================
 	Contact Form
 	==============================================*/
 	$('#contact-form').submit(function() {
-		
+
 		if($('#contact-form').hasClass('clicked')){
 			return false;
 		}
-		
+
 		$('#contact-form').addClass('clicked');
-		
+
 		var buttonCopy = $('#contact-form button').html(),
 			errorMessage = $('#contact-form button').data('error-message'),
 			sendingMessage = $('#contact-form button').data('sending-message'),
 			okMessage = $('#contact-form button').data('ok-message'),
 			hasError = false;
-		
+
 		$('#contact-form .error-message').remove();
-		
+
 		$('.requiredField').each(function() {
 			if($.trim($(this).val()) == '') {
 				var errorText = $(this).data('error-empty');
@@ -409,7 +410,7 @@ $(document).ready(function() {
 				}
 			}
 		});
-		
+
 		if(hasError) {
 			$('#contact-form button').html('<i class="fa fa-times"></i>'+errorMessage);
 			setTimeout(function(){
@@ -419,7 +420,7 @@ $(document).ready(function() {
 		}
 		else {
 			$('#contact-form button').html('<i class="fa fa-spinner fa-spin"></i>'+sendingMessage);
-			
+
 			var formInput = $(this).serialize();
 			$.post($(this).attr('action'),formInput, function(data){
 				$('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
@@ -427,14 +428,14 @@ $(document).ready(function() {
 					$('#contact-form button').html(buttonCopy);
 				$('#contact-form').removeClass('clicked');
 				},2000);
-				
+
 				$('#contact-form')[0].reset();
 			});
 		}
-		
-		return false;	
+
+		return false;
 	});
-	
+
 	/*============================================
 	Newsletter
 	==============================================*/
@@ -447,62 +448,62 @@ $(document).ready(function() {
 			},delay)
 		})
 	})
-	
+
 	$('.mc-newsletter').each(function(){
 		var listUrl = $(this).data('list-url');
 		$(this).ajaxChimp({
 			callback: callbackMailchimp,
 			url: listUrl
 		});
-		
+
 	});
-		
+
 	function callbackMailchimp (resp) {
-		
+
 		var currform = $('.mc-newsletter.mc-current');
-		
+
 		currform.find('.mc-validation p').hide();
 		currform.removeClass('sending');
 		currform.removeClass('mc-current');
-		
+
 		if(resp.result === 'success'){
-	
+
 			currform.find('.mc-text-if-ok').show();
 			currform[0].reset();
-			
+
 		}else{
-		
+
 			if(resp.msg.split(' - ',2)[0] === '0'){
 				currform.find('.mc-text-if-invalid').show();
 			}else{
 				currform.find('.mc-text-if-exist').show();
 			}
-		
+
 		}
-		
+
 	}
-	
+
 	$('.mc-newsletter button').click(function(e) {
 
 		e.preventDefault();
 
 		var $form = $(this).parents('.mc-newsletter');
-		
+
 		$('.mc-newsletter').removeClass('mc-current');
 		$form.addClass('mc-current');
-		
+
 		if($form.is('.sending')){
 			return false;
 		}
-	
+
 		$form.find('.mc-validation p').hide();
 		$form.removeClass('sending');
-		
+
 		var hasError 	= false,
 			$emailInput = $form.find('[type=email]'),
 			emailReg 	= /^([\w-\.]+@([\w-]+\.)+[\w-]{2,8})?$/;
-			
-		
+
+
 		if($.trim($emailInput.val()) == '') {
 			$form.find('.mc-text-if-empty').show();
 			hasError = true;
@@ -510,16 +511,16 @@ $(document).ready(function() {
 			$form.find('.mc-text-if-invalid').show();
 			hasError = true;
 		}
-		
+
 		if(!hasError) {
-		
+
 			$form.find('.mc-text-if-sending').show();
 			$form.addClass('sending');
-			
+
 			$form.submit();
 		}
-		
-		return false;	
+
+		return false;
 	});
-	
-});	
+
+});
