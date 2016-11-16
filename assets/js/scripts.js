@@ -75,7 +75,7 @@ $(document).ready(function() {
 	/*============================================
 	Counters
 	==============================================*/
-	$('.counters').waypoint(function(){
+	/*$('.counters').waypoint(function(){
 		$('.counter').each(count);
 	},{offset:'100%',triggerOnce:true});
 
@@ -83,12 +83,12 @@ $(document).ready(function() {
 		var $this = $(this);
 		options = $.extend({}, options || {}, $this.data('countToOptions') || {});
 		$this.countTo(options);
-	}
+	}*/
 
 	/*============================================
 	Project thumbs - Masonry
 	==============================================*/
-	$(window).load(function(){
+	/*$(window).load(function(){
 
 		if($('#projects-container').length){
 			$('#projects-container').css({visibility:'visible'});
@@ -104,12 +104,12 @@ $(document).ready(function() {
 			scrollSpyRefresh();
 			waypointsRefresh();
 		}
-	});
+	});*/
 
 	/*============================================
 	Filter Projects
 	==============================================*/
-	$('#filter-works a').click(function(e){
+	/*$('#filter-works a').click(function(e){
 		e.preventDefault();
 
 		if($('#project-preview').hasClass('open')){
@@ -137,12 +137,12 @@ $(document).ready(function() {
 		setTimeout(function(){
 			$(window).trigger('resize');
 		},500);
-	});
+	});*/
 
 	/*============================================
 	Project Preview
 	==============================================*/
-	$('.project-item:not(.external-link)').click(function(e){
+	/*$('.project-item:not(.external-link)').click(function(e){
 		e.preventDefault();
 
 		var elem = $(this);
@@ -248,7 +248,7 @@ $(document).ready(function() {
 
 	$('.close-preview').click(function(){
 		closeProject();
-	})
+	})*/
 
 	/*============================================
 	Google Map
@@ -312,14 +312,14 @@ $(document).ready(function() {
 	/*============================================
 	Placeholder Detection
 	==============================================*/
-	if (!Modernizr.input.placeholder) {
+	/*if (!Modernizr.input.placeholder) {
 		$('html').addClass('no-placeholder');
-	}
+	}*/
 
 	/*============================================
 	Video functions
 	==============================================*/
-	if($('.video-container').length) $('.video-container').fitVids();
+	/*if($('.video-container').length) $('.video-container').fitVids();
 
 	$('.video-bg.load').each(function(){
 		var $this = $(this),
@@ -341,7 +341,7 @@ $(document).ready(function() {
 			$('<source>').attr({type:'video/ogg; codecs=&quot;theora, vorbis&quot;',src:video+'.ogg'}).appendTo($this);
 
 		})
-	})
+	})*/
 	/*============================================
 	Resize Functions
 	==============================================*/
@@ -378,7 +378,7 @@ $(document).ready(function() {
 	/*============================================
 	Contact Form
 	==============================================*/
-	$('#contact-form').submit(function() {
+	/*$('#contact-form').submit(function() {
 
 		if($('#contact-form').hasClass('clicked')){
 			return false;
@@ -434,12 +434,12 @@ $(document).ready(function() {
 		}
 
 		return false;
-	});
+	});*/
 
 	/*============================================
 	Newsletter
 	==============================================*/
-	$(window).load(function(){
+	/*$(window).load(function(){
 		$('.autopopup').each(function(){
 			var elem = $(this);
 			var delay = elem.data('delay');
@@ -523,4 +523,4 @@ $(document).ready(function() {
 		return false;
 	});
 
-});
+});*/
