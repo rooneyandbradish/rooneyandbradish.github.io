@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	var speed = $('.header-slider').data('speed') ? parseInt($('.header-slider').data('speed'),10) : 3000;
 
-	$('.header-slider').flexslider({
+	/*$('.header-slider').flexslider({
 		animation: "fade",
 		directionNav: false,
 		controlNav: false,
@@ -36,7 +36,7 @@ $(document).ready(function() {
 		if($('.header-slider').length){
 			$('.header-slider').flexslider('play');
 		}
-	});
+	});*/
 
 	/*============================================
 	Navigation Functions
