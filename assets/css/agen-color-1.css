@@ -31,7 +31,6 @@ a:focus,
 
 #page-loader span,
 .color-bg,
-.overlay-color:before,
 .team-member .member-socials li a:hover,
 #filter-works ul li.active a,
 #filter-works ul li:hover a,
@@ -61,4 +60,8 @@ a:focus,
 .btn.transparent,
 .btn.transparent:focus{
     border-color:#0C7ABF;
+}
+
+.overlay-color:before{
+	background:#ffffff;
 }
