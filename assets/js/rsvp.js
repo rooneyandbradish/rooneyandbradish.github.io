@@ -4,11 +4,12 @@ console.clear(); // <-- keep the console clean on refresh
 (function() {
   'use strict';
 
-  var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
+  var app = angular.module('weddingApp', ['formly', 'formlyBootstrap', '$location']);
   
 
   app.controller('RSVPCtrl', function RSVPCtrl(formlyVersion) {
     var rsvp = this;
+    var rsvp.show = false;
     // function assignment
     rsvp.onSubmit = onSubmit;
 
@@ -24,30 +25,21 @@ console.clear(); // <-- keep the console clean on refresh
     rsvp.options = {
     };
     
+	
+    if(angular.isDefined($location.search().g)){
+	try {				
+		rsvp.names = JSON.parse($location.search().g);
+		rsvp.show = true;
+	} catch(e){
+		rsvp.show = false;
+		console.log("JSON parse failed for " + $location.search().g);
+	}
+    }
+
     rsvp.fields = [
       {
         className: 'row',
-        fieldGroup: [
-          {
-            className: 'col-xs-6',
-            type: 'input',
-            key: 'firstName',
-            templateOptions: {
-              label: 'First Name'
-            }
-          },
-          {
-            className: 'col-xs-6',
-            type: 'input',
-            key: 'lastName',
-            templateOptions: {
-              label: 'Last Name'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': '!model.firstName'
-            }
-          }
-        ]
+	template: '<div><strong>{{name}}</strong></div>'
       },
       {
         className: 'section-label',
@@ -57,11 +49,11 @@ console.clear(); // <-- keep the console clean on refresh
         className: 'row',
         fieldGroup: [
           {
-            className: 'col-xs-2',
-            type: 'label',
-            key: 's',
+            className: 'col-xs-3',
+            type: 'checkbox',
+            key: 'fridayDinner',
             templateOptions: {
-              label: 'Street'
+              label: 'Dinner'
             }
           },
           {
