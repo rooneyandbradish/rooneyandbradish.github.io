@@ -28,12 +28,12 @@ console.clear(); // <-- keep the console clean on refresh
 	
     if(angular.isDefined($location.search().g)){
 	try {				
-		rsvp.names = $location.search().g;
-		console.log(rsvp.names);
-		console.log(typeof rsvp.names)
-		console.log(JSON.parse(rsvp.names));
+		var g = $location.search().g;
+		console.log($location.search().g);
+		rsvp.model.names = JSON.parse(g)
 		rsvp.show = true;
 	} catch(e){
+		console.log(e)
 		rsvp.show = false;
 		console.log("JSON parse failed for " + $location.search().g);
 	}
@@ -42,7 +42,7 @@ console.clear(); // <-- keep the console clean on refresh
     rsvp.fields = [
       {
         className: 'row',
-	template: '<div><h2>{{name}}</h2></div>'
+	template: '<div><h2>{{model.names[0]}}{{model.names[1]?" & " + model.names[1]:""}}</h2></div>'
       },
       {
         className: 'section-label',
