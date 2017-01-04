@@ -65,3 +65,6 @@ a:focus,
 .overlay-color:before{
 	background:#ffffff;
 }
+.formly-field{
+	color:#000;
+}
