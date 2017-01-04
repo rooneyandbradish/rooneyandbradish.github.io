@@ -9,6 +9,7 @@ console.clear(); // <-- keep the console clean on refresh
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $anchorScroll, $timeout) {
         var rsvp = this;
+        $window.scope = rsvp
         rsvp.show = false;
         // function assignment
         rsvp.onSubmit = onSubmit;
