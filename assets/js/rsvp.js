@@ -7,7 +7,7 @@ console.clear(); // <-- keep the console clean on refresh
   var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
   
 
-  app.controller('RSVPCtrl', ['$location', function RSVPCtrl(formlyVersion,$location) {
+  app.controller('RSVPCtrl', ['$location', function($location) {
     var rsvp = this;
     rsvp.show = false;
     // function assignment
