@@ -33,7 +33,7 @@ console.clear(); // <-- keep the console clean on refresh
                     .then(
                         function(success) {
                             rsvp.show = true;
-                            if (angular.isDefined(success.data)) {
+                            if (angular.isDefined(success.data) && angular.isDefined(success.data.Items)) {
                                 rsvp.model = success.data.Items[0].model
                                 rsvp.inviteId = inviteId
                                 console.log(JSON.stringify(rsvp.model));
