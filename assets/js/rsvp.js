@@ -29,11 +29,11 @@ console.clear(); // <-- keep the console clean on refresh
 	{
 		className: 'section-label',
 		template:  '<hr/><div><strong>Your {{name}}</strong></div>',
-		fieldGroup: [
+		fieldGroup: [{
 			className: 'col-xs-6',
 			type: 'input',
 			key: 'guestOne'
-		]
+		}]
 	}
     ];
 
