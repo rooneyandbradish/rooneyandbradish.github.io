@@ -32,8 +32,8 @@ console.clear(); // <-- keep the console clean on refresh
                 $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?inviteId=' + inviteId)
                     .then(
                         function(success) {
-                            rsvp.show = true;
-                            if (angular.isDefined(success.data) && angular.isDefined(success.data.Items)) {
+                            if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
+                                rsvp.show = true;
                                 rsvp.model = success.data.Items[0].model
                                 rsvp.inviteId = inviteId
                                 console.log(JSON.stringify(rsvp.model));
@@ -99,7 +99,7 @@ console.clear(); // <-- keep the console clean on refresh
                                     {
                                         className: 'row',
                                         fieldGroup: [{
-                                                className: 'col-xs-4 col-sm-4',
+                                                className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements0',
                                                 hideExpression: "!model.saturdayCeremony",
@@ -108,7 +108,7 @@ console.clear(); // <-- keep the console clean on refresh
                                                 }
                                             },
                                             {
-                                                className: 'col-xs-4 col-sm-4',
+                                                className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
                                                 hideExpression: "!model.saturdayCeremony || !model.name1",
@@ -125,7 +125,7 @@ console.clear(); // <-- keep the console clean on refresh
                                     {
                                         className: 'row',
                                         fieldGroup: [{
-                                                className: 'col-xs-4 col-sm-4',
+                                                className: 'col-xs-12',
                                                 type: 'radio',
                                                 key: 'travelArrangements',
                                                 templateOptions :{
