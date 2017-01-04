@@ -30,6 +30,8 @@ console.clear(); // <-- keep the console clean on refresh
 	try {				
 		rsvp.names = $location.search().g;
 		console.log(rsvp.names);
+		console.log(typeof rsvp.names)
+		console.log(JSON.parse(rsvp.names));
 		rsvp.show = true;
 	} catch(e){
 		rsvp.show = false;
@@ -40,7 +42,7 @@ console.clear(); // <-- keep the console clean on refresh
     rsvp.fields = [
       {
         className: 'row',
-	template: '<div><strong>{{rsvp.names[0]}}{{rsvp.names[1]? " & " + rsvp.names[1]:""}}</strong></div>'
+	template: '<div><h2>{{name}}</h2></div>'
       },
       {
         className: 'section-label',
@@ -59,8 +61,8 @@ console.clear(); // <-- keep the console clean on refresh
           },
           {
             className: 'col-xs-3',
-            type: 'input',
-            key: 'cityName',
+            type: 'checkbox',
+            key: 'fridayBed',
             templateOptions: {
               label: 'City'
             }
