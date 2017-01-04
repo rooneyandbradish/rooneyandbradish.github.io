@@ -1226,128 +1226,19 @@ a:focus,
 /*----------------------
 -----Contact Styles-----
 ------------------------*/
-.contact-item h2{
-    font-size:21px;
-    font-weight:300;
-    margin-bottom: 0;
+.formly.row{
+  display:block;
 }
 
-.contact-item .icon{
-    padding:10px 10px 10px 0;
-    font-size:36px;
-    color:#DF451A;
-    vertical-align: middle;
-
-}
-
-.contact-item p{
-    padding-left: 60px;
-    margin-bottom: 60px;
+.formly-field.section-label {
+  margin-bottom: 8px
 }
 
 .form-group label{
-    display:none;
     font-size:18px;
     line-height:24px;
     font-weight:100;
     text-transform:uppercase;
-}
-
-.no-placeholder #contact-form .form-group label{
-    display:block;
-}
-
-.controls {
-    padding:0;
-    margin-bottom:30px;
-}
-
-#contact-form.no-placeholder .controls {
-    margin-top:0;
-}
-
-.form-control {
-    display:inline;
-    padding-left: 20px;
-    padding-right: 20px;
-    background:#fff;
-    border-radius:0;
-    border-color: #ddd;
-    outline:none;
-    height:56px;
-    font-weight:300;
-    font-size: 16px;
-}
-
-.form-group{
-    position:relative;
-}
-
-textarea.form-control {
-    height:auto;
-    padding: 20px;
-    max-width:100%;
-    min-width:100%;
-    vertical-align:top;
-}
-
-.form-control:focus {
-    outline:none;
-    box-shadow:none;
-    border-color: #777;
-}
-
-#contact-form .error-message {
-    padding:5px 0;
-    position:absolute;
-    top:-30px;
-    right:0;
-    font-size:14px;
-    line-height:24px;
-    font-weight:300;
-    color:#ff3345;
-    z-index:10;
-}
-
-#contact-form.no-placeholder .error-message {
-    top:0;
-}
-
-.mc-newsletter{
-    position: relative;
-}
-
-.mc-newsletter .controls{
-    margin-bottom: 20px;
-}
-
-.mc-newsletter [type=email]{
-    margin-top: 20px;
-}
-
-.mc-validation{
-    position: absolute;
-    top: 100%;
-    width: 100%;
-}
-
-.mc-validation p{
-    display: none;
-}
-
-.mc-text-if-empty,
-.mc-text-if-invalid{
-    color: #cc2222;
-}
-
-#contact{
-    position: relative;
-    z-index: 1;
-}
-
-#contact .container{
-    position: relative;
-    z-index: 99;
 }
 
 #gmar-wrapper{
