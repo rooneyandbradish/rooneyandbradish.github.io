@@ -195,7 +195,7 @@
         <div class="container features">
             <h2 class="section-title"><span class="primary">RSVP</span></h2>
             <div class="col-xs-12">
-                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitMessage">
+                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitMessage" ng-show = "rsvp.show">
                     <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
                         <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
                     </formly-form>
@@ -203,7 +203,10 @@
                 <h3 ng-show = "submitMessage">
                     <span class = "primary">{{submitMessage}}</span>
                 </h3>
-                <pre ng-show = "errorMessage">{{errorMessage|json}}</pre>
+                <pre ng-show = "errorMessage">
+                Could you just email me the following?:
+                {{errorMessage|json}}
+                </pre>
             </div>
             <!--COLXS-->
         </div>
