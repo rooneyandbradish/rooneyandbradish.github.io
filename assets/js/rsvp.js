@@ -28,7 +28,8 @@ console.clear(); // <-- keep the console clean on refresh
 	
     if(angular.isDefined($location.search().g)){
 	try {				
-		rsvp.names = JSON.parse($location.search().g);
+		rsvp.names = $location.search().g;
+		console.log(rsvp.names);
 		rsvp.show = true;
 	} catch(e){
 		rsvp.show = false;
@@ -39,7 +40,7 @@ console.clear(); // <-- keep the console clean on refresh
     rsvp.fields = [
       {
         className: 'row',
-	template: '<div><strong>{{name}}</strong></div>'
+	template: '<div><strong>{{rsvp.names[0]}}{{rsvp.names[1]? " & " + rsvp.names[1]:""}}</strong></div>'
       },
       {
         className: 'section-label',
