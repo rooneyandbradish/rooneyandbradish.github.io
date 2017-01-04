@@ -200,11 +200,10 @@
                         <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
                     </formly-form>
                 </form>
-                <h3 ng-show = "submitMessage">
+                <h3 ng-show = "submitMessage" class = "text-center">
                     <span class = "primary">{{submitMessage}}</span>
                 </h3>
                 <pre ng-show = "errorMessage">
-                Could you just email me the following?:
                 {{errorMessage|json}}
                 </pre>
             </div>

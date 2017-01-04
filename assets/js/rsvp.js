@@ -7,7 +7,7 @@ console.clear(); // <-- keep the console clean on refresh
     var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
 
 
-    app.controller('RSVPCtrl', ['$location', '$http', '$scope', function($location, $http, $scope) {
+    app.controller('RSVPCtrl', function($window, $http, $scope, $anchorScroll, $timeout) {
         var rsvp = this;
         rsvp.show = false;
         // function assignment
@@ -22,19 +22,20 @@ console.clear(); // <-- keep the console clean on refresh
         rsvp.options = {};
         rsvp.fields = [];
 
-
-        if (angular.isDefined($location.search().g)) {
+        console.log($window.location.search)
+        var inviteRegex = /\?g=([a-z0-9]+)/;
+        if (angular.isDefined($window.location.search) && inviteRegex.test($window.location.search)){
             try {
-                var g = $location.search().g;
-                console.log($location.search().g);
-                $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?inviteId=' + g)
+                var inviteId = inviteRegex.exec($window.location.search)[1];
+                $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?inviteId=' + inviteId)
                     .then(
                         function(success) {
                             rsvp.show = true;
                             if (angular.isDefined(success.data)) {
                                 rsvp.model = success.data.Items[0].model
-                                rsvp.inviteId = g
+                                rsvp.inviteId = inviteId
                                 console.log(JSON.stringify(rsvp.model));
+                                $timeout(()=>{$anchorScroll("rsvp")},750)
                                 rsvp.fields = [
                                     {
                                         className: 'row',
@@ -47,7 +48,7 @@ console.clear(); // <-- keep the console clean on refresh
                                     {
                                         className: 'row',
                                         fieldGroup: [{
-                                                className: 'col-xs-4',
+                                                className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
                                                 key: 'fridayDinner',
                                                 templateOptions: {
@@ -55,43 +56,35 @@ console.clear(); // <-- keep the console clean on refresh
                                                 }
                                             },
                                             {
-                                                className: 'col-xs-4',
+                                                className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
                                                 key: 'fridayBed',
                                                 templateOptions: {
-                                                    label: 'Bed'
+                                                    label: 'Bed + Breakfast at YHA'
                                                 }
                                             }
                                         ]
                                     },
                                     {
                                         className: 'section-label',
-                                        template: '<hr /><div><strong>Saturday</strong></div>'
+                                        template: '<hr /><div><strong>Saturday</strong> (the day of the wedding)</div>'
                                     },
                                     {
                                         className: 'row',
                                         fieldGroup: [{
-                                                className: 'col-xs-4',
+                                                className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
                                                 key: 'saturdayCeremony',
                                                 templateOptions: {
-                                                    label: 'Ceremony'
+                                                    label: 'Ceremony + Reception'
                                                 }
                                             },
                                             {
-                                                className: 'col-xs-4',
-                                                type: 'checkbox',
-                                                key: 'saturdayBreakfast',
-                                                templateOptions: {
-                                                    label: 'Reception & Wedding Breakfast'
-                                                }
-                                            },
-                                            {
-                                                className: 'col-xs-4',
+                                                className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
                                                 key: 'saturdayBed',
                                                 templateOptions: {
-                                                    label: 'Bed'
+                                                    label: 'Bed + Breakfast at YHA'
                                                 }
                                             },
                                         ]
@@ -99,26 +92,51 @@ console.clear(); // <-- keep the console clean on refresh
                                     {
                                         className: 'section-label',
                                         template: 'Dietary Requirements',
-                                        hideExpression: "!model.saturdayBreakfast"
+                                        hideExpression: "!model.saturdayCeremony"
                                     },
                                     {
                                         className: 'row',
                                         fieldGroup: [{
-                                                className: 'col-xs-6',
+                                                className: 'col-xs-4 col-sm-4',
                                                 type: 'input',
-                                                key: 'dietaryRequirements1',
-                                                hideExpression: "!model.saturdayBreakfast",
+                                                key: 'dietaryRequirements0',
+                                                hideExpression: "!model.saturdayCeremony",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''"
                                                 }
                                             },
                                             {
-                                                className: 'col-xs-6',
+                                                className: 'col-xs-4 col-sm-4',
                                                 type: 'input',
-                                                key: 'dietaryRequirements2',
-                                                hideExpression: "!model.saturdayBreakfast || !model.name1",
+                                                key: 'dietaryRequirements1',
+                                                hideExpression: "!model.saturdayCeremony || !model.name1",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        className: 'section-label',
+                                        template: '<hr /><div><strong>Travel</strong></div>',
+                                    },
+                                    {
+                                        className: 'row',
+                                        fieldGroup: [{
+                                                className: 'col-xs-4 col-sm-4',
+                                                type: 'radio',
+                                                key: 'travelArrangements',
+                                                templateOptions :{
+                                                  options:[
+                                                    {
+                                                      "name":"Car",
+                                                      "value":"car"
+                                                    },
+                                                    {
+                                                      "name":"Public Transport",
+                                                      "value":"publicTransport"
+                                                    }
+                                                  ]
                                                 }
                                             }
                                         ]
@@ -133,7 +151,6 @@ console.clear(); // <-- keep the console clean on refresh
             } catch (e) {
                 console.log(e)
                 rsvp.show = false;
-                console.log("JSON parse failed for " + $location.search().g);
             }
         }
 
@@ -159,7 +176,7 @@ console.clear(); // <-- keep the console clean on refresh
                     }
                 )
         }
-    }]);
+    });
 
 
 })();
