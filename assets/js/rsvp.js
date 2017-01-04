@@ -4,8 +4,7 @@ console.clear(); // <-- keep the console clean on refresh
 (function() {
   'use strict';
 
-  var app = angular.module('weddingApp', ['formly', 'formlyBootstrap'], function config() {
-  });
+  var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
   
 
   app.controller('RSVPCtrl', function RSVPCtrl(formlyVersion) {
@@ -52,15 +51,15 @@ console.clear(); // <-- keep the console clean on refresh
       },
       {
         className: 'section-label',
-        template: '<hr /><div><strong>Address:</strong></div>'
+        template: '<hr /><div><strong>Friday</strong></div>'
       },
       {
         className: 'row',
         fieldGroup: [
           {
-            className: 'col-xs-6',
-            type: 'input',
-            key: 'street',
+            className: 'col-xs-2',
+            type: 'label',
+            key: 's',
             templateOptions: {
               label: 'Street'
             }
