@@ -24,8 +24,8 @@ console.clear(); // <-- keep the console clean on refresh
     };
 
     rsvp.model = {
-      onFriday = false,
-      onSaturday = false
+      onFriday : false,
+      onSaturday : false
     };
     rsvp.options = {
     };
