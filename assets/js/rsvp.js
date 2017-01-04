@@ -4,10 +4,10 @@ console.clear(); // <-- keep the console clean on refresh
 (function() {
   'use strict';
 
-  var app = angular.module('weddingApp', ['formly', 'formlyBootstrap', '$location']);
+  var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
   
 
-  app.controller('RSVPCtrl', function RSVPCtrl(formlyVersion) {
+  app.controller('RSVPCtrl', ['$location', function RSVPCtrl(formlyVersion,$location) {
     var rsvp = this;
     rsvp.show = false;
     // function assignment
@@ -101,7 +101,7 @@ console.clear(); // <-- keep the console clean on refresh
     function onSubmit() {
       alert(JSON.stringify(rsvp.model), null, 2);
     }
-  });
+  }]);
 
   
 })();
