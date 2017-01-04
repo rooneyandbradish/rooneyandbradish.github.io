@@ -64,7 +64,7 @@
                     <li>
                         <a href="#details" class="scrollto">Details</a>
                     </li>
-                    <li>
+                    <li ng-show = "rsvp.show">
                         <a href="#rsvp" class="scrollto">RSVP</a>
                     </li>
                 </ul>
@@ -191,11 +191,11 @@
     <!-- ==============================================
          VENUE
          =============================================== -->
-    <section class="gray-bg light-typo padding-top-bottom overlay-color" id="rsvp">
+    <section class="gray-bg light-typo padding-top-bottom overlay-color" id="rsvp" ng-show = "rsvp.show">
         <div class="container features">
             <h2 class="section-title"><span class="primary">RSVP</span></h2>
             <div class="col-xs-12">
-                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitMessage" ng-show = "rsvp.show">
+                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitMessage" >
                     <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
                         <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
                     </formly-form>
