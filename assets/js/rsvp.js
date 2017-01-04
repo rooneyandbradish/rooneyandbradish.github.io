@@ -44,9 +44,4 @@ console.clear(); // <-- keep the console clean on refresh
   });
 
   
-  app.directive('exampleDirective', function() {
-    return {
-      templateUrl: 'example-directive.html'
-    };
-  });
 })();
