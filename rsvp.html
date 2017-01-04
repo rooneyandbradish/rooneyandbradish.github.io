@@ -43,7 +43,7 @@
       <![endif]-->
       <script type="text/javascript" src="assets/js/libs/modernizr.min.js"></script>
    </head>
-   <body data-spy="scroll" data-target="#main-nav" data-offset="300">
+   <body data-spy="scroll" data-target="#main-nav" data-offset="300" ng-app = "weddingApp" ng-controller = "RSVPCtrl as rsvp">
       <!--=== PAGE PRELOADER ===-->
       <div id="page-loader"><span></span></div>
       <!-- ==============================================
@@ -189,17 +189,12 @@
          <div class="container features">
             <h2 class="section-title"><span class="primary">RSVP</span></h2>
             <div class="row">
-               <br>
-               <br>
-               <br>
-               <br>
-               <br>
-               <br>
-               <br>
-               <br>
-               <br>
-               <br>
-            </div>
+		<form ng-submit="rsvp.onSubmit()" name="rsvp.form" novalidate>
+        		<formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
+          			<button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
+        		</formly-form>
+      		</form>
+            </div><!--ROW-->
          </div>
       </section>
       <!-- ==============================================
@@ -223,6 +218,9 @@
       <script src='assets/js/jquery.easing.1.3.min.js'></script>
       <script src="assets/js/libs/bootstrap.min.js"></script>
       <script src="http://maps.google.com/maps/api/js?key=AIzaSyBe7fhJ2-PN829p0M9YQgln8gMcfenMdfA"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+      <script src="//npmcdn.com/angular-formly@latest/dist/formly.js"></script>
+      <script src="//npmcdn.com/angular-formly-templates-bootstrap@latest/dist/angular-formly-templates-bootstrap.js"></script>
       <script src='assets/js/parallax.min.js'></script>
       <script src="assets/js/waypoints.min.js"></script>
       <script src="assets/js/scripts.js"></script>
