@@ -9,7 +9,7 @@ console.clear(); // <-- keep the console clean on refresh
 
   app.controller('RSVPCtrl', function RSVPCtrl(formlyVersion) {
     var rsvp = this;
-    var rsvp.show = false;
+    rsvp.show = false;
     // function assignment
     rsvp.onSubmit = onSubmit;
 
