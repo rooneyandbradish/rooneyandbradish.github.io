@@ -31,9 +31,10 @@ console.clear(); // <-- keep the console clean on refresh
 		template:  '<hr/><div><strong>Your {{name}}</strong></div>',
 		fieldGroup: [
 			className: 'col-xs-6',
-			type: 'input'
+			type: 'input',
 			key: 'guestOne'
 		]
+	}
     ];
 
     // function definition
