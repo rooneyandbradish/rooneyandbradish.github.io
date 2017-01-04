@@ -92,17 +92,27 @@ console.clear(); // <-- keep the console clean on refresh
                                         ]
                                     },
                                     {
-                                        className: 'section-label',
-                                        template: 'Dietary Requirements',
-                                        hideExpression: "!model.saturdayCeremony"
+                                      className:"section-label",
+                                      hideExpression: "!model.saturdayCeremony && !model.fridayDinner",
+                                      template: "<hr /><div></div>"
                                     },
                                     {
                                         className: 'row',
-                                        fieldGroup: [{
+                                        fieldGroup: [
+                                          {
+                                                className: 'col-xs-12 col-sm-6',
+                                                type: 'checkbox',
+                                                key: 'dietaryRequirements',
+                                                hideExpression: "!model.saturdayCeremony && !model.fridayDinner",
+                                                templateOptions:{
+                                                  "label": "Add Dietary Requirements"
+                                                }
+                                            },
+                                          {
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements0',
-                                                hideExpression: "!model.saturdayCeremony",
+                                                hideExpression: "!model.saturdayCeremony || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''"
                                                 }
@@ -111,7 +121,7 @@ console.clear(); // <-- keep the console clean on refresh
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
-                                                hideExpression: "!model.saturdayCeremony || !model.name1",
+                                                hideExpression: "!model.saturdayCeremony || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1"
                                                 }
