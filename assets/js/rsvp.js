@@ -32,8 +32,7 @@ console.clear(); // <-- keep the console clean on refresh
 		fieldGroup: [
 			className: 'col-xs-6',
 			type: 'input'
-			key: 'guestOne',
-			
+			key: 'guestOne'
 		]
     ];
 
