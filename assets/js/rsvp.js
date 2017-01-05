@@ -100,7 +100,7 @@ console.clear(); // <-- keep the console clean on refresh
                                         className: 'row',
                                         fieldGroup: [
                                           {
-                                                className: 'col-xs-12 col-sm-6',
+                                                className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'dietaryRequirements',
                                                 hideExpression: "!model.saturdayCeremony && !model.fridayDinner",
