@@ -9,13 +9,11 @@ console.clear(); // <-- keep the console clean on refresh
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $anchorScroll, $timeout) {
         var rsvp = this;
-        window.rsvp = $scope
         $scope.r = rsvp;
         rsvp.show = false;
-        // function assignment
+
         rsvp.onSubmit = onSubmit;
 
-        // variable assignment
         rsvp.author = {
             name: 'Rich Bradish'
         };
@@ -24,7 +22,6 @@ console.clear(); // <-- keep the console clean on refresh
         rsvp.options = {};
         rsvp.fields = [];
 
-        console.log($window.location.search)
         var inviteRegex = /\?g=([a-z0-9]+)/;
         if (angular.isDefined($window.location.search) && inviteRegex.test($window.location.search)){
             try {
