@@ -38,7 +38,7 @@ console.clear(); // <-- keep the console clean on refresh
                                 rsvp.fields = [
                                     {
                                         className: 'row',
-                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1?" & " + model.name1:""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please us know if you can come!"}}</div>'
+                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1?" & " + model.name1:""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>'
                                     },
                                     {
                                         className: 'section-label',
@@ -176,7 +176,7 @@ console.clear(); // <-- keep the console clean on refresh
             $http.post('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler', JSON.stringify(postBody))
                 .then(
                     function(success) {
-                        $scope.submitMessage = "Thanks so much!"
+                        $scope.submitMessage = "Thank you!"
                         console.log($scope);
                     },
                     function(failure) {
