@@ -109,7 +109,7 @@ console.clear(); // <-- keep the console clean on refresh
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements0',
-                                                hideExpression: "!model.saturdayCeremony || !model.dietaryRequirements",
+                                                hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''"
                                                 }
@@ -118,7 +118,7 @@ console.clear(); // <-- keep the console clean on refresh
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
-                                                hideExpression: "!model.saturdayCeremony || !model.name1 || !model.dietaryRequirements",
+                                                hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1"
                                                 }
