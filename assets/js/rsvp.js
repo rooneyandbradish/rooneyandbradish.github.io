@@ -36,6 +36,7 @@ console.clear(); // <-- keep the console clean on refresh
                                 rsvp.names = success.data.Items[0].names;
                                 rsvp.inviteId = success.data.Items[0].inviteId;
                                 console.log(JSON.stringify(rsvp.model));
+                                console.log(JSON.stringify(rsvp.names));
                                 $timeout(()=>{$anchorScroll("rsvp")},750)
                                 rsvp.fields = [
                                     {
