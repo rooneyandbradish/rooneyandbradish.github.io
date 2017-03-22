@@ -31,7 +31,6 @@ console.clear(); // <-- keep the console clean on refresh
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
                                 var data = success.data.Items[0]
-                                console.log("Data: " + data)
                                 rsvp.model = data.model;
                                 if(data.names){
                                     rsvp.model.name0 = data.names.name0;
