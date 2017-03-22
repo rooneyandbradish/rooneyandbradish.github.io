@@ -19,6 +19,7 @@ console.clear(); // <-- keep the console clean on refresh
         };
 
         rsvp.model = {};
+        rsvp.names = {}
         rsvp.options = {};
         rsvp.fields = [];
 
@@ -32,6 +33,8 @@ console.clear(); // <-- keep the console clean on refresh
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
                                 rsvp.show = true;
                                 rsvp.model = success.data.Items[0].model;
+                                rsvp.model.name0 = success.data.Items[0].names.name0;
+                                rsvp.model.name1 = success.data.Items[0].names.name1;
                                 rsvp.inviteId = success.data.Items[0].inviteId;
                                 console.log(JSON.stringify(rsvp.model));
                                 $timeout(()=>{$anchorScroll("rsvp")},750)
