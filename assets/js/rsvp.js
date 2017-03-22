@@ -30,14 +30,17 @@ console.clear(); // <-- keep the console clean on refresh
                     .then(
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
-                                rsvp.show = true;
-                                rsvp.model = success.data.Items[0].model;
-                                rsvp.model.names = {};
-                                if(rsvp.model && success.data.Items[0].names && success.data.Items[0].names.names0) rsvp.model.names0 = success.data.Items[0].names.names0
-                                if(rsvp.model && success.data.Items[0].names && success.data.Items[0].names.names1) rsvp.model.names1 = success.data.Items[0].names.names1
-                                rsvp.inviteId = success.data.Items[0].inviteId;
+                                var data = success.data.Items[0]
+                                console.log("Data: " + data)
+                                rsvp.model = data.model;
+                                rsvp.model.names = {
+                                    name0: data.names.name0,
+                                    name1: data.names.name1
+                                };
+                                rsvp.inviteId = data.inviteId;
                                 console.log(JSON.stringify(rsvp.model));
                                 $timeout(()=>{$anchorScroll("rsvp")},750)
+                                rsvp.show = true;
                                 rsvp.fields = [
                                     {
                                         className: 'row',
