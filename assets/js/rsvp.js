@@ -151,12 +151,15 @@ console.clear(); // <-- keep the console clean on refresh
                                         ]
                                     }
                                 ];
+                            } else {
+                                createSnackBar();
+                                showSnackBar("I couldn't find an invite for " + wordsId)
                             }
                         },
                         function(failure) {
                             rsvp.show = false;
-                            createSnackBar()
-                            showSnackBar("I couldn't find an invite for " + wordsId)
+                            createSnackBar();
+                            showSnackBar("Something went wrong trying to look up " + wordsId)
                         }
                     )
             } catch (e) {
