@@ -26,7 +26,7 @@ console.clear(); // <-- keep the console clean on refresh
         if (angular.isDefined($window.location.search) && wordsRegex.test($window.location.search)){
             try {
                 var wordsId = wordsRegex.exec($window.location.search)[1];
-                $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?inviteId=' + wordsId)
+                $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId=' + wordsId)
                     .then(
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
