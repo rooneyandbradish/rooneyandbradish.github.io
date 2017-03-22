@@ -141,7 +141,6 @@ console.clear(); // <-- keep the console clean on refresh
                                                 type: 'radio',
                                                 key: 'travelArrangements',
                                                 templateOptions :{
-                                                  required:true,
                                                   options:[
                                                     {
                                                       "name":"Car",
