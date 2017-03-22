@@ -33,15 +33,14 @@ console.clear(); // <-- keep the console clean on refresh
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
                                 rsvp.show = true;
                                 rsvp.model = success.data.Items[0].model;
-                                rsvp.model.name0 = success.data.Items[0].names.name0;
-                                rsvp.model.name1 = success.data.Items[0].names.name1;
+                                rsvp.names = success.data.Items[0].names;
                                 rsvp.inviteId = success.data.Items[0].inviteId;
                                 console.log(JSON.stringify(rsvp.model));
                                 $timeout(()=>{$anchorScroll("rsvp")},750)
                                 rsvp.fields = [
                                     {
                                         className: 'row',
-                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1?" & " + model.name1:""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>'
+                                        template: '<div><h2>Hi, {{names.name0}}{{names.name1?" & " + names.name1:""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>'
                                     },
                                     {
                                         className: 'section-label',
@@ -114,16 +113,16 @@ console.clear(); // <-- keep the console clean on refresh
                                                 key: 'dietaryRequirements0',
                                                 hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !model.dietaryRequirements",
                                                 expressionProperties: {
-                                                    "templateOptions.label": "model.name1?model.name0:''"
+                                                    "templateOptions.label": "names.name1?names.name0:''"
                                                 }
                                             },
                                             {
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
-                                                hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !model.name1 || !model.dietaryRequirements",
+                                                hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !names.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
-                                                    "templateOptions.label": "model.name1"
+                                                    "templateOptions.label": "names.name1"
                                                 }
                                             }
                                         ]
