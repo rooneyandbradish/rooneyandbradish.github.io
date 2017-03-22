@@ -22,7 +22,7 @@ console.clear(); // <-- keep the console clean on refresh
         rsvp.options = {};
         rsvp.fields = [];
 
-        var inviteRegex = /\?g=([a-z0-9]+)/;
+        var inviteRegex = /\?rsvp=([a-z0-9]+)/;
         if (angular.isDefined($window.location.search) && inviteRegex.test($window.location.search)){
             try {
                 var inviteId = inviteRegex.exec($window.location.search)[1];
