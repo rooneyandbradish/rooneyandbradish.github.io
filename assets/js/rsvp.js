@@ -155,6 +155,8 @@ console.clear(); // <-- keep the console clean on refresh
                         },
                         function(failure) {
                             rsvp.show = false;
+                            createSnackBar()
+                            showSnackBar("I couldn't find an invite for " + inviteId)
                         }
                     )
             } catch (e) {
