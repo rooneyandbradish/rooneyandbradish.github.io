@@ -33,10 +33,10 @@ console.clear(); // <-- keep the console clean on refresh
                                 var data = success.data.Items[0]
                                 console.log("Data: " + data)
                                 rsvp.model = data.model;
-                                rsvp.model.names = {
-                                    name0: data.names.name0,
-                                    name1: data.names.name1
-                                };
+                                if(data.names){
+                                    rsvp.model.name0 = data.names.name0;
+                                    rsvp.model.name1 = data.names.name1;
+                                }
                                 rsvp.inviteId = data.inviteId;
                                 console.log(JSON.stringify(rsvp.model));
                                 $timeout(()=>{$anchorScroll("rsvp")},750)
