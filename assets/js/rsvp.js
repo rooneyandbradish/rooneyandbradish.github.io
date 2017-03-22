@@ -22,11 +22,11 @@ console.clear(); // <-- keep the console clean on refresh
         rsvp.options = {};
         rsvp.fields = [];
 
-        var inviteRegex = /\?rsvp=([a-z0-9]+)/;
-        if (angular.isDefined($window.location.search) && inviteRegex.test($window.location.search)){
+        var wordsRegex = /\?rsvp=([a-z]+-[a-z]+)/;
+        if (angular.isDefined($window.location.search) && wordsRegex.test($window.location.search)){
             try {
-                var inviteId = inviteRegex.exec($window.location.search)[1];
-                $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?inviteId=' + inviteId)
+                var wordsId = wordsRegex.exec($window.location.search)[1];
+                $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?inviteId=' + wordsId)
                     .then(
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
@@ -156,7 +156,7 @@ console.clear(); // <-- keep the console clean on refresh
                         function(failure) {
                             rsvp.show = false;
                             createSnackBar()
-                            showSnackBar("I couldn't find an invite for " + inviteId)
+                            showSnackBar("I couldn't find an invite for " + wordsId)
                         }
                     )
             } catch (e) {
