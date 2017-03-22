@@ -151,7 +151,10 @@ console.clear(); // <-- keep the console clean on refresh
                                         ]
                                     }
                                 ];
-                            }
+                            } else {
+                                createSnackBar();
+                                showSnackBar("I couldn't find an invite for " + wordsId)
+                           }
                         },
                         function(failure) {
                             rsvp.show = false;
@@ -163,10 +166,7 @@ console.clear(); // <-- keep the console clean on refresh
                 console.log(e)
                 rsvp.show = false;
             }
-        } else {
-            createSnackBar();
-            showSnackBar("I couldn't find an invite for " + wordsId)
-       }
+        }
 
 
 
