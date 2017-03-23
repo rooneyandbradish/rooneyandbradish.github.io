@@ -30,6 +30,7 @@ console.clear(); // <-- keep the console clean on refresh
                     .then(
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
+                                rsvp.show = true;
                                 var data = success.data.Items[0]
                                 rsvp.model = data.model;
                                 if(data.names){
@@ -39,7 +40,6 @@ console.clear(); // <-- keep the console clean on refresh
                                 rsvp.inviteId = data.inviteId;
                                 console.log(JSON.stringify(rsvp.model));
                                 $timeout(()=>{$anchorScroll("rsvp")},750)
-                                rsvp.show = true;
                                 rsvp.fields = [
                                     {
                                         className: 'row',
