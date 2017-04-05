@@ -9,15 +9,11 @@ console.clear();
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $anchorScroll, $timeout) {
         var rsvp = this;
-        $scope.r = rsvp;
         rsvp.show = false;
-
         rsvp.onSubmit = onSubmit;
-
         rsvp.author = {
             name: 'Rich Bradish'
         };
-
         rsvp.model = {};
         rsvp.options = {};
         rsvp.fields = [];
@@ -186,6 +182,17 @@ console.clear();
             $http.post('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler', JSON.stringify(postBody))
                 .then(
                     function(success) {
+                        //calculate when they ought to get here:
+                        var forFridayDinner = "01/12/2017 07:30 PM";
+                        var forFridayBed = "01/12/2017 10:00 PM";
+                        var forSaturdayCeremony = "02/12/2017 01:00 PM";
+                        //when is it all over
+                        var afterTheCeremony = "03/12/2017 02:00 AM"
+                        var theMorningAfter = "03/12/2017 12:00 AM"
+                        
+                        $scope.startDateTimeString = forFridayDinner
+                        $scope.endDateTimeString = theMorningAfter
+                        
                         $scope.submitSuccess = true
                         console.log($scope);
                     },
