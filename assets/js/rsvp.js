@@ -50,7 +50,9 @@ console.clear();
                                                     label : 'Can you make it?'
                                                 },
                                                 expressionProperties: {
-                                                    "templateOptions.label": "(model.name1?'We':'I') + '\'ll be there!'"
+                                                    "templateOptions.label": function($viewValue, $modelValue, scope) {
+                                                        return scope.model.name1 ? "We" : "I" + "'ll be there!"
+                                                    }
                                                 }
                                             }
                                         ]
@@ -94,7 +96,7 @@ console.clear();
                                                 type: 'checkbox',
                                                 key: 'saturdayCeremony',
                                                 templateOptions: {
-                                                    label: 'Ceremony + Reception'
+                                                    label: 'The Wedding'
                                                 }
                                             },
                                             {
