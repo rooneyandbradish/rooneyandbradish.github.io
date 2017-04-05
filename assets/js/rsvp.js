@@ -203,12 +203,11 @@ var addToCalendar =
             $http.post('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler', JSON.stringify(postBody))
                 .then(
                     function(success) {
-                        $scope.submitMessage = "Thank you!<br>"
-                        $scope.submitMessage += addToCalendar
+                        $scope.submitSuccess = true
                         console.log($scope);
                     },
                     function(failure) {
-                        $scope.submitMessage = "It's all gone horribly wrong - could you just email me the below?"
+                        $scope.submitSuccess = false
                         $scope.errorMessage = data
                     }
                 )
