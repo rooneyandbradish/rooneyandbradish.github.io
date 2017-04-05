@@ -34,7 +34,6 @@ console.clear();
                                     rsvp.model.name1 = data.names.name1;
                                 }
                                 rsvp.inviteId = data.inviteId;
-                                console.log(JSON.stringify(rsvp.model));
                                 rsvp.fields = [
                                     {
                                         className: 'row',
@@ -45,9 +44,9 @@ console.clear();
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
                                                 type: 'checkbox',
-                                                key: 'canCome',
+                                                key: 'saturdayCeremony',
                                                 templateOptions: {
-                                                    description: 'Tick the box if you can make it'
+                                                    description: '<small>Tick the box if you can make it</small>'
                                                 },
                                                 expressionProperties: {
                                                     "templateOptions.label": function($viewValue, $modelValue, scope) {
@@ -59,12 +58,12 @@ console.clear();
                                     },
                                     {
                                         className: 'section-label',
-                                        hideExpression: '!model.canCome',
+                                        hideExpression: '!model.saturdayCeremony',
                                         template: '<hr /><div><strong>Friday</strong></div>'
                                     },
                                     {
                                         className: 'row',
-                                        hideExpression: '!model.canCome',
+                                        hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
@@ -85,18 +84,19 @@ console.clear();
                                     },
                                     {
                                         className: 'section-label',
-                                        hideExpression: '!model.canCome',
+                                        hideExpression: '!model.saturdayCeremony',
                                         template: '<hr /><div><strong>Saturday</strong> (the day of the wedding)</div>'
                                     },
                                     {
                                         className: 'row',
-                                        hideExpression: '!model.canCome',
+                                        hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
                                                 key: 'saturdayCeremony',
                                                 templateOptions: {
-                                                    label: 'The Wedding'
+                                                    label: 'The wedding',
+                                                    disabled: true,
                                                 }
                                             },
                                             {
@@ -111,7 +111,7 @@ console.clear();
                                     },
                                     {
                                       className:"section-label",
-                                      hideExpression: "!model.canCome || (!model.saturdayCeremony && !model.fridayDinner)",
+                                      hideExpression: "!model.saturdayCeremony || !model.fridayDinner",
                                       template: "<hr /><div></div>"
                                     },
                                     {
@@ -121,7 +121,7 @@ console.clear();
                                                 className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'dietaryRequirements',
-                                                hideExpression: "!canCome || (!model.saturdayCeremony && !model.fridayDinner)",
+                                                hideExpression: "!model.saturdayCeremony || !model.fridayDinner",
                                                 templateOptions:{
                                                   "label": "Add Dietary Requirements"
                                                 }
@@ -130,7 +130,7 @@ console.clear();
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements0',
-                                                hideExpression: "!model.canCome || (!model.saturdayCeremony && !model.fridayDinner) || !model.dietaryRequirements",
+                                                hideExpression: "!model.saturdayCeremony || !model.fridayDinner || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''"
                                                 }
@@ -139,7 +139,7 @@ console.clear();
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
-                                                hideExpression: "!model.canCome || (!model.saturdayCeremony && !model.fridayDinner) || !model.name1 || !model.dietaryRequirements",
+                                                hideExpression: "!model.saturdayCeremony || !model.fridayDinner || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1"
                                                 }
@@ -148,12 +148,12 @@ console.clear();
                                     },
                                     {
                                         className: 'section-label',
-                                        hideExpression: '!model.canCome',
+                                        hideExpression: '!model.saturdayCeremony',
                                         template: '<hr /><div><strong>Travel</strong></div>',
                                     },
                                     {
                                         className: 'row',
-                                        hideExpression: '!model.canCome',
+                                        hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
                                                 type: 'radio',
