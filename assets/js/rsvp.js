@@ -46,7 +46,9 @@ console.clear();
                                                 className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'canCome',
-                                                label : 'Can you make it?',
+                                                templateOptions: {
+                                                    label : 'Can you make it?'
+                                                },
                                                 expressionProperties: {
                                                     "templateOptions.label": "(model.name1?'We':'I') + '&apos;ll be there!'"
                                                 }
