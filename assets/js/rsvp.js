@@ -38,7 +38,10 @@ console.clear();
                                 rsvp.fields = [
                                     {
                                         className: 'row',
-                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1? " & " + model.name1 : ""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>',
+                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1? " & " + model.name1 : ""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>'
+                                    },
+                                    {
+                                        className: 'row',
                                         fieldGroup: [{
                                                 className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
