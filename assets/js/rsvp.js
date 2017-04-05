@@ -1,7 +1,7 @@
 console.clear();
 
 var addToCalendar = 
-    '<div title="Add to Calendar" class="addeventatc">'/*+
+    '<div title="Add to Calendar" class="addeventatc">';/*+
     'Add to Calendar'+
     '<span class="start">01/12/2017 07:30 PM</span>'+
     '<span class="end">03/12/2017 11:00 AM</span>'+
