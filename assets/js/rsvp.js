@@ -1,6 +1,6 @@
 console.clear();
 
-var addToCalendar = 
+/*var addToCalendar = 
     '<div title="Add to Calendar" class="addeventatc">'+
     'Add to Calendar'+
     '<span class="start">01/12/2017 07:30 PM</span>'+
@@ -14,7 +14,7 @@ var addToCalendar =
     '<span class="all_day_event">false</span>'+
     '<span class="date_format">DD/MM/YYYY</span>'+
     '<span class="client">aUDLwegRjzZPbuGDtmUf27462</span>'+
-    '</div>'
+    '</div>'*/
 
 
 /* global angular */
