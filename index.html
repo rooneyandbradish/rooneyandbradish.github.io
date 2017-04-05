@@ -217,7 +217,7 @@
                 <div id="nearby" class="tab-pane fade col-xs-12">
                   <div class = "row">
                     <br>
-                    <h4>There are a number of B+Bs nearby:</h5>
+                    <h4>There are a number of B+Bs nearby:</h4>
                   </div>
 
                   <div class = "col-xs-12 col-sm-6 media">
@@ -306,8 +306,8 @@
                     </formly-form>
                 </form>
                 <h3  ng-show="submitSuccess === true" class = "text-center">
-                    <span class = "primary">Thank you!</span>
-                    <span ng-hide="isComing">Sorry you can't make it.</span>
+                    <span class = "primary" ng-show="isComing">Thank you - look forward to seeing you there!</span>
+                    <span class = "primary" ng-hide="isComing">Sorry you can't make it - thank you for letting us know.</span>
                     <br><br>
                     <div title="Add to Calendar" class="addeventatc" ng-show="isComing">
                         Add to Calendar
