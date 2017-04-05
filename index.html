@@ -299,15 +299,32 @@
         <div class="container features">
             <h2 class="section-title"><span class="primary">RSVP</span></h2>
             <div class="col-xs-12">
-                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitMessage" >
+                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitSuccess===true" >
                     <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
                         <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
                     </formly-form>
                 </form>
-                <h3 ng-show = "submitMessage" class = "text-center">
-                    <span class = "primary">{{submitMessage}}</span>
+                <h3 ng-show = "submitMessage" class = "text-center" ng-show = "submitSuccess===true">
+                    <span class = "primary">Thank you!</span>         
+                    <div title="Add to Calendar" class="addeventatc">
+                        Add to Calendar
+                        <span class="start">{{startDateTimeString}}</span>
+                        <span class="end">{{endDateTimeString}}</span>
+                        <span class="timezone">Europe/Paris</span>
+                        <span class="title">Rich + Megan's wedding</span>
+                        <span class="description"></span>
+                        <span class="location">Wilderhope Manor, TF13 6EG, United Kingdom</span>
+                        <span class="organizer">Aisle Be Damned</span>
+                        <span class="organizer_email">%77edd&#105;ng&#64;rooney&#46;and&#46;br&#97;d&#105;%2&#69;s%6&#56;</span>
+                        <span class="all_day_event">false</span>
+                        <span class="date_format">DD/MM/YYYY</span>
+                        <span class="client">aUDLwegRjzZPbuGDtmUf27462</span>
+                    </div>
                 </h3>
-                <pre ng-show = "errorMessage">
+                <h3 ng-show = "submitSuccess===false">
+                    <span class = "primary">It's all gone wrong - can you just email be the below?</span>   
+                </h3>
+                <pre ng-show = "submitSuccess===false">
                 {{errorMessage|json}}
                 </pre>
             </div>
