@@ -49,9 +49,6 @@ console.clear();
                                                 expressionProperties: {
                                                     "templateOptions.label": "(model.name1?'We':'I') + ' can make it'"
                                                 }
-                                                templateOptions: {
-                                                    label: '{{model.name1?"We":"I"}} can make it'
-                                                }
                                             }
                                         ]
                                     },
