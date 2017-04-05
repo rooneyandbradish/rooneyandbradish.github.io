@@ -46,6 +46,9 @@ console.clear();
                                                 className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
                                                 key: 'canCome',
+                                                expressionProperties: {
+                                                    "templateOptions.label": "(model.name1?'We':'I') + ' can make it'"
+                                                }
                                                 templateOptions: {
                                                     label: '{{model.name1?"We":"I"}} can make it'
                                                 }
