@@ -1,12 +1,12 @@
 console.clear();
 
-/*var addToCalendar = 
-    '<div title="Add to Calendar" class="addeventatc">'+
+var addToCalendar = 
+    '<div title="Add to Calendar" class="addeventatc">'/*+
     'Add to Calendar'+
     '<span class="start">01/12/2017 07:30 PM</span>'+
     '<span class="end">03/12/2017 11:00 AM</span>'+
     '<span class="timezone">Europe/Paris</span>'+
-    "<span class='title'>Rich + Megan's wedding</span>"+
+    '<span class='title'>Rich + Megan&apos;s wedding</span>'+
     '<span class="description"></span>'+
     '<span class="location">Wilderhope Manor, TF13 6EG, United Kingdom</span>'+
     '<span class="organizer">Aisle Be Damned</span>'+
