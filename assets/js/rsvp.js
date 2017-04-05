@@ -113,7 +113,7 @@ console.clear();
                                     },
                                     {
                                       className:"section-label",
-                                      hideExpression: "(!model.saturdayCeremony && !model.fridayDinner)",
+                                      hideExpression: "!model.saturdayCeremony || !model.fridayDinner",
                                       template: "<hr /><div></div>"
                                     },
                                     {
@@ -123,7 +123,7 @@ console.clear();
                                                 className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'dietaryRequirements',
-                                                hideExpression: "!model.saturdayCeremony && !model.fridayDinner",
+                                                hideExpression: "!model.saturdayCeremony || !model.fridayDinner",
                                                 templateOptions:{
                                                   "label": "Add Dietary Requirements"
                                                 }
