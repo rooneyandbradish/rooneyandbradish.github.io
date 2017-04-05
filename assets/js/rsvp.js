@@ -98,7 +98,7 @@ console.clear();
                                                     label: 'The wedding',
                                                 },
                                                 expressionProperties: {
-                                                    "templateOptions.disabled": true
+                                                    "templateOptions.disabled": "true"
                                                 }
                                             },
                                             {
@@ -226,7 +226,7 @@ console.clear();
                             $scope.endDateTimeString = theMorningAfter
                         }
                         
-                        $scope.isComing = rsvp.model.saturdayCeremony
+                        $scope.isComing = data.saturdayCeremony
                         $scope.submitSuccess = true
                         console.log($scope);
                     },
