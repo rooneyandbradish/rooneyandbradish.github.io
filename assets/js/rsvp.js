@@ -50,7 +50,7 @@ console.clear();
                                                     label : 'Can you make it?'
                                                 },
                                                 expressionProperties: {
-                                                    "templateOptions.label": "(model.name1?'We':'I') + '&apos;ll be there!'"
+                                                    "templateOptions.label": "(model.name1?'We':'I') + '\'ll be there!'"
                                                 }
                                             }
                                         ]
