@@ -46,7 +46,7 @@ console.clear();
                                                 type: 'checkbox',
                                                 key: 'saturdayCeremony',
                                                 templateOptions: {
-                                                    description: '<small>Tick the box if you can make it</small>'
+                                                    label: "Can you make it?"
                                                 },
                                                 expressionProperties: {
                                                     "templateOptions.label": function($viewValue, $modelValue, scope) {
