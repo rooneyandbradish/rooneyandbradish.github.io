@@ -43,11 +43,12 @@ console.clear();
                                     {
                                         className: 'row',
                                         fieldGroup: [{
-                                                className: 'col-xs-6 col-sm-4',
+                                                className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'canCome',
+                                                label : 'Can you make it?',
                                                 expressionProperties: {
-                                                    "templateOptions.label": "(model.name1?'We':'I') + ' can make it'"
+                                                    "templateOptions.label": "(model.name1?'We':'I') + '&apos;ll be there!'"
                                                 }
                                             }
                                         ]
