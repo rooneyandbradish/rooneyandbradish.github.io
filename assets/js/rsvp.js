@@ -113,7 +113,7 @@ console.clear();
                                     },
                                     {
                                       className:"section-label",
-                                      hideExpression: "!model.saturdayCeremony || !model.fridayDinner",
+                                      hideExpression: "(!model.saturdayCeremony && !model.fridayDinner)",
                                       template: "<hr /><div></div>"
                                     },
                                     {
