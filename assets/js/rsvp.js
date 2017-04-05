@@ -46,9 +46,8 @@ console.clear();
                                                 className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'canCome',
-                                                description: 'Tick the box if you can make it',
                                                 templateOptions: {
-                                                    label : 'Can you make it?'
+                                                    description: 'Tick the box if you can make it'
                                                 },
                                                 expressionProperties: {
                                                     "templateOptions.label": function($viewValue, $modelValue, scope) {
