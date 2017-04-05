@@ -96,7 +96,9 @@ console.clear();
                                                 key: 'saturdayCeremony',
                                                 templateOptions: {
                                                     label: 'The wedding',
-                                                    disabled: true,
+                                                },
+                                                expressionProperties: {
+                                                    "templateOptions.disabled": true
                                                 }
                                             },
                                             {
