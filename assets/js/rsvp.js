@@ -215,9 +215,18 @@ console.clear();
                         var afterTheCeremony = "03/12/2017 02:00 AM"
                         var theMorningAfter = "03/12/2017 12:00 AM"
                         
-                        $scope.startDateTimeString = forFridayDinner
-                        $scope.endDateTimeString = theMorningAfter
+                        $scope.startDateTimeString = forSaturdayCeremony
+                        if(rsvp.model.fridayDinner){
+                            $scope.startDateTimeString = forFridayDinner
+                        } else if (rsvp.model.fridayBed){
+                            $scope.startDateTimeSTring = forFridayBed
+                        }
+                        $scope.endDateTimeString = afterTheCeremony
+                        if(rsvp.model.saturdayBed){
+                            $scope.endDateTimeString = theMorningAfter
+                        }
                         
+                        $scope.isComing = rsvp.model.saturdayCeremony
                         $scope.submitSuccess = true
                         console.log($scope);
                     },
