@@ -38,14 +38,25 @@ console.clear();
                                 rsvp.fields = [
                                     {
                                         className: 'row',
-                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1?" & " + model.name1:""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>'
+                                        template: '<div><h2>Hi, {{model.name0}}{{model.name1? " & " + model.name1 : ""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you like":"Please let us know if you can come!"}}</div>',
+                                        fieldGroup: [{
+                                                className: 'col-xs-6 col-sm-4',
+                                                type: 'checkbox',
+                                                key: 'canCome',
+                                                templateOptions: {
+                                                    label: '{{model.name1?"We":"I"}} can make it'
+                                                }
+                                            }
+                                        ]
                                     },
                                     {
                                         className: 'section-label',
+                                        hideExpression: '!canCome',
                                         template: '<hr /><div><strong>Friday</strong></div>'
                                     },
                                     {
                                         className: 'row',
+                                        hideExpression: '!canCome',
                                         fieldGroup: [{
                                                 className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
@@ -66,10 +77,12 @@ console.clear();
                                     },
                                     {
                                         className: 'section-label',
+                                        hideExpression: '!canCome',
                                         template: '<hr /><div><strong>Saturday</strong> (the day of the wedding)</div>'
                                     },
                                     {
                                         className: 'row',
+                                        hideExpression: '!canCome',
                                         fieldGroup: [{
                                                 className: 'col-xs-6 col-sm-4',
                                                 type: 'checkbox',
@@ -90,7 +103,7 @@ console.clear();
                                     },
                                     {
                                       className:"section-label",
-                                      hideExpression: "!model.saturdayCeremony && !model.fridayDinner",
+                                      hideExpression: "!canCome || (!model.saturdayCeremony && !model.fridayDinner)",
                                       template: "<hr /><div></div>"
                                     },
                                     {
@@ -100,7 +113,7 @@ console.clear();
                                                 className: 'col-xs-12',
                                                 type: 'checkbox',
                                                 key: 'dietaryRequirements',
-                                                hideExpression: "!model.saturdayCeremony && !model.fridayDinner",
+                                                hideExpression: "!canCome || (!model.saturdayCeremony && !model.fridayDinner)",
                                                 templateOptions:{
                                                   "label": "Add Dietary Requirements"
                                                 }
@@ -109,7 +122,7 @@ console.clear();
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements0',
-                                                hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !model.dietaryRequirements",
+                                                hideExpression: "!canCome || (!model.saturdayCeremony && !model.fridayDinner) || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''"
                                                 }
@@ -118,7 +131,7 @@ console.clear();
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
-                                                hideExpression: "(!model.saturdayCeremony && !model.fridayDinner) || !model.name1 || !model.dietaryRequirements",
+                                                hideExpression: "!canCome || (!model.saturdayCeremony && !model.fridayDinner) || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1"
                                                 }
@@ -127,10 +140,12 @@ console.clear();
                                     },
                                     {
                                         className: 'section-label',
+                                        hideExpression: '!canCome',
                                         template: '<hr /><div><strong>Travel</strong></div>',
                                     },
                                     {
                                         className: 'row',
+                                        hideExpression: '!canCome',
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
                                                 type: 'radio',
