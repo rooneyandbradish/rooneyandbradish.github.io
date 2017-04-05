@@ -307,8 +307,9 @@
                 </form>
                 <h3  ng-show="submitSuccess === true" class = "text-center">
                     <span class = "primary">Thank you!</span>
-                    <br>
-                    <div title="Add to Calendar" class="addeventatc">
+                    <span ng-hide="isComing">Sorry you can't make it.</span>
+                    <br><br>
+                    <div title="Add to Calendar" class="addeventatc" ng-show="isComing">
                         Add to Calendar
                         <span class="start">{{startDateTimeString}}</span>
                         <span class="end">{{endDateTimeString}}</span>
@@ -324,7 +325,7 @@
                     </div>
                 </h3>
                 <h3 ng-show = "submitSuccess === false">
-                    <span class = "primary">It's all gone wrong - can you just email be the below?</span>   
+                    <span class = "primary">It's all gone wrong - can you just email be the below? <small>(or try clicking submit again)</small></span>   
                 </h3>
                 <pre ng-show = "submitSuccess === false">
                 {{errorMessage|json}}
