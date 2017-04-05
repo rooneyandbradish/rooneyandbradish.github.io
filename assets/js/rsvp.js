@@ -213,7 +213,7 @@ console.clear();
                         var forSaturdayCeremony = "02/12/2017 01:00 PM";
                         //when is it all over
                         var afterTheCeremony = "03/12/2017 02:00 AM"
-                        var theMorningAfter = "03/12/2017 12:00 AM"
+                        var theMorningAfter = "03/12/2017 12:00 PM"
                         
                         $scope.startDateTimeString = forSaturdayCeremony
                         if(rsvp.model.fridayDinner){
