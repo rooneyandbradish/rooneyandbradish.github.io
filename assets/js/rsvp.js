@@ -56,7 +56,6 @@ var addToCalendar =
                                 }
                                 rsvp.inviteId = data.inviteId;
                                 console.log(JSON.stringify(rsvp.model));
-                                $timeout(()=>{$anchorScroll("rsvp")},750)
                                 rsvp.fields = [
                                     {
                                         className: 'row',
@@ -173,6 +172,7 @@ var addToCalendar =
                                         ]
                                     }
                                 ];
+                                $timeout(()=>{$anchorScroll("rsvp")},750)
                             } else {
                                 createSnackBar();
                                 showSnackBar("I couldn't find an invite for<br>" + wordsId)
