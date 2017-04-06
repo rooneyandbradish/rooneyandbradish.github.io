@@ -309,8 +309,6 @@
                     <span class = "primary" ng-show="isComing">Thank you - we're looking forward to seeing you there!</span>
                     <span class = "primary" ng-hide="isComing">Sorry you can't make it - thank you for letting us know.</span>
                     <br>
-                    <button type="submit" class="btn btn-primary submit-button" ng-click = "submitSuccess=null">Change response</button>
-                    <br>
                     <div title="Add to Calendar" class="addeventatc" ng-show="isComing">
                         Add to Calendar
                         <span class="start">{{startDateTimeString}}</span>
@@ -325,6 +323,8 @@
                         <span class="date_format">DD/MM/YYYY</span>
                         <span class="client">aUDLwegRjzZPbuGDtmUf27462</span>
                     </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary submit-button" ng-click = "submitSuccess=null">Change response</button>
                 </h3>
                 <h3 ng-show = "submitSuccess === false">
                     <span class = "primary">It's all gone wrong - can you just email be the below? <small>(or try clicking submit again)</small></span>   
