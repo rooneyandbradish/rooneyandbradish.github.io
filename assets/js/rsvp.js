@@ -25,6 +25,7 @@
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
                                 rsvp.show = true;
+                                $timeout(()=>$anchorScroll("rsvp"),750)
                                 var data = success.data.Items[0]
                                 rsvp.model = data.model;
                                 if(data.names){
@@ -174,7 +175,6 @@
                                         ]
                                     }
                                 ];
-                                setTimeout('$anchorScroll("rsvp")',750)
                             } else {
                                 createSnackBar();
                                 showSnackBar("I couldn't find an invite for<br>" + wordsId)
