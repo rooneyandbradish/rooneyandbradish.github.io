@@ -5,7 +5,7 @@
     var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
 
 
-    app.controller('RSVPCtrl', function($window, $http, $scope, $anchorScroll, $timeout) {
+    app.controller('RSVPCtrl', function($window, $http, $scope) {
         var rsvp = this;
         rsvp.show = false;
         rsvp.onSubmit = onSubmit;
@@ -25,7 +25,6 @@
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
                                 rsvp.show = true;
-                                $timeout(()=>$anchorScroll("rsvp"),750)
                                 var data = success.data.Items[0]
                                 rsvp.model = data.model;
                                 if(data.names){
