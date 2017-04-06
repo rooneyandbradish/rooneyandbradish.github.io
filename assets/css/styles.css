@@ -84,6 +84,19 @@ a:focus,
     color:#DF451A;
 }
 
+/*---------------------------
+-- Debrand the cal invite ---
+---------------------------*/
+.addeventatc_dropdown .brx {
+    display:none;
+}
+.addeventatc_dropdown .frs {
+    display:none;
+}
+
+
+
+
 /*----------------------
 ---Main Layout Styles---
 ------------------------*/
