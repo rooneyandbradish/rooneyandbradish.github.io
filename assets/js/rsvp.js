@@ -1,5 +1,3 @@
-console.clear();
-
 /* global angular */
 (function() {
     'use strict';
