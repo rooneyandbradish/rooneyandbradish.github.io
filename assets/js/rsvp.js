@@ -5,7 +5,13 @@
     var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
 
 
-    app.controller('RSVPCtrl', function($window, $http, $scope) {
+    app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
+        //thanks IE
+        var scrollToRSVP = function(){
+            $timeout(function(){
+                $anchorScroll("rsvp")
+            },750)
+        }
         var rsvp = this;
         rsvp.show = false;
         rsvp.onSubmit = onSubmit;
@@ -25,6 +31,7 @@
                         function(success) {
                             if (angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])) {
                                 rsvp.show = true;
+                                scrollToRSVP();
                                 var data = success.data.Items[0]
                                 rsvp.model = data.model;
                                 if(data.names){
