@@ -174,7 +174,7 @@
                                         ]
                                     }
                                 ];
-                                $timeout(()=>{$anchorScroll("rsvp")},750)
+                                setTimeout('$anchorScroll("rsvp")',750)
                             } else {
                                 createSnackBar();
                                 showSnackBar("I couldn't find an invite for<br>" + wordsId)
