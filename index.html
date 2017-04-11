@@ -302,9 +302,9 @@
             <div class="col-xs-12">
                 Submit : {{submitSuccess}} : Success
                 <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitSuccess" >
-                    <mega-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
+                    <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
                         <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
-                    </mega-form>
+                    </formly-form>
                 </form>
                 <h3 ng-show="submitSuccess === true" class = "text-center">
                     <span class = "primary" ng-show="isComing">Thanks! Look forward to seeing you there.</span>
