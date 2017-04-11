@@ -193,8 +193,8 @@
                         }
                     )
             } catch (e) {
-                console.log(e)
                 rsvp.show = false;
+                console.log(e)
             }
         }
 
@@ -202,7 +202,6 @@
 
         // function definition
         function onSubmit(data) {
-            console.log(data)
             var postBody = {
                 model: data,
                 inviteId: rsvp.inviteId,
@@ -232,7 +231,6 @@
                         
                         $scope.isComing = data.saturdayCeremony
                         $scope.submitSuccess = true
-                        console.log($scope);
                     },
                     function(failure) {
                         $scope.submitSuccess = false
