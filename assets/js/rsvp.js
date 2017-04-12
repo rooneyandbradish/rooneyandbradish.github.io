@@ -6,17 +6,17 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
-        var submitSwitch(on,fleek){
-            $scope.submitting = on;
-            $scope.submitMessage = fleek
-        }
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
             },750)
         }
-        submitSwitch(false,"Submit");
         var rsvp = this;
+        var submitSwitch(on,fleek){
+            rsvp.submitting = on;
+            rsvp.submitMessage = fleek
+        }
+        submitSwitch(false,"Submit");
         rsvp.show = false;
         rsvp.onSubmit = onSubmit;
         rsvp.author = {
