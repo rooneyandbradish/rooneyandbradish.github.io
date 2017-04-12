@@ -12,9 +12,9 @@
             },750)
         }
         var rsvp = this;
-        var submitSwitch(on,fleek){
+        var submitSwitch = function(on,fleek){
             rsvp.submitting = on;
-            rsvp.submitMessage = fleek
+            rsvp.submitMessage = fleek;
         }
         submitSwitch(false,"Submit");
         rsvp.show = false;
