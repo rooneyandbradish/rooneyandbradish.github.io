@@ -205,14 +205,14 @@
                 <div id="manor" class="tab-pane fade in active col-xs-12">
                   <br>
                     The Manor is a youth-hostel - so you can just stumble upstairs at the end of the evening.<br><br>
-                    There are more or less enough beds for everyone so let us know when you RSVP if you'd like to stay.
+                    There are enough beds for everyone so let us know when you RSVP if you'd like to stay.
                     We've booked the whole place so no need to &apos;phone the venue.
                     <br><br>
                     Most of the accommodation is in dorm rooms - you can see the rooms <a href="http://www.yha.org.uk/hostel/wilderhope-manor">here</a>.
                     <br><br>
                     As it's not a hotel you'll need to bring your own toiletries, hair-drier etc.
                     <br><br>
-                    We'd welcome a small contribution to the cost if you are staying at the Manor - it'll go behind the bar.
+                    We'd welcome a small contribution to the cost (it'll go behind the bar) if you are staying at the Manor. 
                 </div>
                 <div id="nearby" class="tab-pane fade col-xs-12">
                   <div class = "row">
@@ -302,7 +302,7 @@
                 Submit : {{submitSuccess}} : Success
                 <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitSuccess" >
                     <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
-                        <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Sendy sendy">Submit</button>
+                        <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid"><i class='fa fa-circle-o-notch fa-spin' ng-if="submitting"></i>{{submitMessage}}</button>
                     </formly-form>
                 </form>
                 <h3 ng-show="submitSuccess === true" class = "text-center">
