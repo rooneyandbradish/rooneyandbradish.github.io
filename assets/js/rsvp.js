@@ -6,12 +6,16 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
-        //thanks IE
+        var submitSwitch(on,fleek){
+            $scope.submitting = on;
+            $scope.submitMessage = fleek
+        }
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
             },750)
         }
+        submitSwitch(false,"Submit");
         var rsvp = this;
         rsvp.show = false;
         rsvp.onSubmit = onSubmit;
@@ -197,11 +201,10 @@
                 console.log(e)
             }
         }
-
-
-
-        // function definition
+        
+        
         function onSubmit(data) {
+            submitSwitch(true,"Sendy send send");
             var postBody = {
                 model: data,
                 inviteId: rsvp.inviteId,
@@ -210,6 +213,7 @@
             $http.post('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler', JSON.stringify(postBody))
                 .then(
                     function(success) {
+                        submitSwitch(false,"Re-submit");
                         //calculate when they ought to get here:
                         var forFridayDinner = "01/12/2017 07:30 PM";
                         var forFridayBed = "01/12/2017 10:00 PM";
@@ -233,6 +237,7 @@
                         $scope.submitSuccess = true
                     },
                     function(failure) {
+                        submitSwitch(false,"Try again");
                         $scope.submitSuccess = false
                         $scope.errorMessage = data
                     }
