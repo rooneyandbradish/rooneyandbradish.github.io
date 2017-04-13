@@ -206,7 +206,8 @@
         function onSubmit(data) {
             submitSwitch(true,"Sendy send send");
             for(var i in data){
-                if(data[i]===""){data[i]="-"}
+                console.log(i)
+                if(data[i]===""){delete data[i]}
             }
             var postBody = {
                 model: data,
