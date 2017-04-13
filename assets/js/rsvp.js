@@ -205,6 +205,9 @@
         
         function onSubmit(data) {
             submitSwitch(true,"Sendy send send");
+            for(var i in data){
+                if(data[i]===""){data[i]="-"}
+            }
             var postBody = {
                 model: data,
                 inviteId: rsvp.inviteId,
