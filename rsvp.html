@@ -41,11 +41,12 @@
   angular.module('submit', [])
     .controller('submitController', ['$scope', '$http', function($scope,$http) {
       var showError = function(text){
+        $scope.exists = false;
         $scope.error = text
-        $scope.rsvpForm.$invalid = true
       }
       var noError = function(){
         delete $scope.error
+        $scope.exists = true
       }
       $scope.invite = {};
       $scope.$watch('invite', function (){
@@ -90,11 +91,11 @@
 
         <!-- Button -->
         <div class="form-group">
-          <div class="col-xs-4 col-xs-offset-4">
-            <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="button" class="btn btn-primary" ng-disabled="rsvpForm.$invalid" ng-click = "">RSVP</a>
-          </div>
-           <div class="col-xs-4" ng-if = "error">
+          <div class="col-xs-4" ng-if = "error">
             {{error}}
+          </div>
+          <div class="col-xs-4 col-xs-offset-4">
+            <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="button" class="btn btn-primary" ng-disabled="rsvpForm.$invalid && exists" ng-click = "">RSVP</a>
           </div>
         </div>
 
