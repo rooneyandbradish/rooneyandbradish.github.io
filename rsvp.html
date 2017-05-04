@@ -51,12 +51,6 @@
         return true
       }
       $scope.invite = {};
-      $scope.submit = function(){
-        console.log("Called submit")
-        if(check()){
-          $location.path("/?rsvp="+$scope.invite.fw+"-"+$scope.invite.sw+"#rsvp")
-        }
-      }
       var check = function (){
         if($scope.invite.fw && $scope.invite.sw){
           $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+$scope.invite.fw+'-'+$scope.invite.sw+'#rsvp')
@@ -82,7 +76,7 @@
   </head>
   <body>
     <div class = "container">
-      <form name ="rsvpForm" class="form-horizontal" ng-app = "submit" ng-controller = "submitController" ng-submit = "submit()">
+      <form name ="rsvpForm" class="form-horizontal" ng-app = "submit" ng-controller = "submitController">
         <fieldset>
 
         <!-- Two word form -->
@@ -108,7 +102,7 @@
         <!-- Button -->
         <div class="form-group">
           <div class="col-xs-4 col-xs-offset-4">
-            <button href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="submit" class="btn btn-primary" ng-disabled="rsvpForm.$invalid || !exists">RSVP</button>
+            <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="submit" class="btn btn-primary" ng-disabled="rsvpForm.$invalid || !exists">RSVP</a>
           </div>
         </div>
 
