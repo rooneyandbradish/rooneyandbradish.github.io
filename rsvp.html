@@ -50,7 +50,7 @@
       $scope.invite = {};
       $scope.$watch('invite', function (){
         if($scope.invite.fw && $scope.invite.sw){
-          $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+$scope.invite.fw+$scope.invite.sw+'#rsvp')
+          $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+$scope.invite.fw+'-'+$scope.invite.sw+'#rsvp')
           .then(
             function(success){
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
