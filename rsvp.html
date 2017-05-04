@@ -60,7 +60,7 @@
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
                 noError()
               } else {
-                showError("I couldn't find an RSVP with <b>" + fw + "-" + sw + "</b> on it")
+                showError("I couldn't find an RSVP with " + fw + "-" + sw + " on it")
               }
             },
             function(error){
