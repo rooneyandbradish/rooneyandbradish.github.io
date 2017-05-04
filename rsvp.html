@@ -39,23 +39,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
     <script>
   angular.module('submit', [])
-    .controller('submitController', ['$scope', '$http', '$location', function($scope,$http,$location) {
-      $scope.submit = function(fw,sw) {
-        if(fw && sw){
-          $scope.error = ""
-          $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+fw+"-"+sw)
-            .then(function(success){
-              if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
-                $location.path("/?"+fw+"-"+sw+"#rsvp")
-              }
-            },
-            function(error){
-              $scope.error = "I can't find an RSVP with those words on it"
-          });
-        } else {
-          $scope.error = "Please enter both words"
-        }
-      };
+    .controller('submitController', ['$scope', '$http', function($scope,$http) {
+      $scope.$watch('invite', function (tmpStr){
+        $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+$scope.invite.fw+$scope.invite.sw+'#rsvp')
+      },true)
     }]);
 </script>
   </head>
@@ -72,9 +59,9 @@
           <label class="col-xs-4 control-label" for="firstword">Enter the words on your RSVP</label>
           <div class="input-group col-xs-6">
             <span class="input-group-addon">respond-to.us/</span>
-            <input ng-model = "fw" id = "firstword" type="text" class="form-control" placeholder="First word" required/>
+            <input ng-model = "invite.fw" type="text" class="form-control" placeholder="First word" required/>
             <span class="input-group-addon" style="border-left: 0; border-right: 0;">&ndash;</span>
-            <input ng-model = "sw" type="text" class="form-control" placeholder="Second word" required/>
+            <input ng-model = "invite.sw" type="text" class="form-control" placeholder="Second word" required/>
           </div>
         </div>
 
