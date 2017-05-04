@@ -51,7 +51,7 @@
         return true
       }
       $scope.invite = {};
-      $scope.submit() = function(){
+      $scope.submit = function(){
         if(check()){
           $location.path("/?rsvp="+$scope.invite.fw+"-"+$scope.invite.sw+"#rsvp")
         }
