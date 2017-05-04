@@ -52,6 +52,7 @@
       }
       $scope.invite = {};
       $scope.submit = function(){
+        console.log("Called submit")
         if(check()){
           $location.path("/?rsvp="+$scope.invite.fw+"-"+$scope.invite.sw+"#rsvp")
         }
@@ -75,7 +76,7 @@
         }
       }      
       
-      $scope.$watch('invite', check,true)
+      $scope.$watch('invite',check,true)
     }]);
 </script>
   </head>
@@ -107,7 +108,7 @@
         <!-- Button -->
         <div class="form-group">
           <div class="col-xs-4 col-xs-offset-4">
-            <a button = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="submit" class="btn btn-primary" ng-disabled="rsvpForm.$invalid && exists">RSVP</a>
+            <button href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="submit" class="btn btn-primary" ng-disabled="rsvpForm.$invalid && exists">RSVP</a>
           </div>
         </div>
 
