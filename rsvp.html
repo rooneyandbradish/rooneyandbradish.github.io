@@ -81,7 +81,7 @@
         <!-- Text input-->
         <div class="form-group">
           <label class="col-xs-4 control-label" for="firstword">Enter the words on your RSVP</label>
-          <div class="input-group col-xs-6">
+          <div class="input-group col-xs-7">
             <span class="input-group-addon">respond-to.us/</span>
             <input ng-model = "invite.fw" ng-model-options = "{debounce:500}" type="text" class="form-control" placeholder="First word" required/>
             <span class="input-group-addon" style="border-left: 0; border-right: 0;">&ndash;</span>
@@ -90,7 +90,7 @@
         </div>
           
         <!-- errors-->
-         <div class="col-xs-4 col-xs-offset-4 alert alert-danger" ng-show="error">
+         <div class="col-xs-7 col-xs-offset-4 alert alert-danger" ng-show="error">
             {{error}}
          </div>
           
