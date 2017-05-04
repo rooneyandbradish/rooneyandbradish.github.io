@@ -39,16 +39,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
     <script>
   angular.module('submit', [])
-    .controller('submitController', ['$scope', '$http', '$location', function($scope,$http,$location) {
+    .controller('submitController', ['$scope', '$http', '$window', function($scope,$http,$window) {
       var showError = function(text){
         $scope.exists = false;
         $scope.error = text
-        return false
       }
       var noError = function(){
         delete $scope.error
         $scope.exists = true
-        return true
+        $window.location.href = '/?rsvp='+$scope.fw+"-"+$scope.sw+"#rsvp";
       }
       $scope.invite = {};
       var check = function (){
@@ -57,14 +56,14 @@
           .then(
             function(success){
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
-                return noError()
+                noError()
               } else {
-                return showError("I couldn't find an RSVP with those words on it")
+                showError("I couldn't find an RSVP with those words on it")
               }
             },
             function(error){
               console.log("No" + error)
-              return showError("I couldn't look up your RSVP sorry.")
+              showError("I couldn't look up your RSVP sorry.")
             }
           )
         }
