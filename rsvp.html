@@ -40,15 +40,27 @@
     <script>
   angular.module('submit', [])
     .controller('submitController', ['$scope', '$http', function($scope,$http) {
+      var showError = function(text){
+        $scope.error = text
+        $scope.rsvpForm.$invalid = true
+      }
+      var noError = function(){
+        delete $scope.error
+      }
       $scope.invite = {};
       $scope.$watch('invite', function (){
         $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+$scope.invite.fw+$scope.invite.sw+'#rsvp')
         .then(
           function(success){
-            console.log("Yes" + success.data)
+            if(angular.isDefined(success.data) && angular.isDegined(success.data.Items[0])){
+              noError()
+            } else {
+              showError("I couldn't find an RSVP with those words on it")
+            }
           },
           function(error){
             console.log("No" + error)
+            showError("I couldn't look up your RSVP sorry.")
           }
         )
       },true)
@@ -77,7 +89,7 @@
         <!-- Button -->
         <div class="form-group">
           <div class="col-xs-4 col-xs-offset-4">
-            <a href = "/?{{invite.fw}}-{{invite.sw}}#rsvp" type="button" class="btn btn-primary" ng-disabled="rsvpForm.$invalid" ng-click = "">RSVP</a>
+            <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="button" class="btn btn-primary" ng-disabled="rsvpForm.$invalid" ng-click = "">RSVP</a>
           </div>
            <div class="col-xs-4" ng-if = "error">
             {{error}}
