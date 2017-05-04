@@ -85,8 +85,8 @@
 
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-xs-4 control-label" for="firstword">Enter the words on your RSVP</label>
-          <div class="input-group col-xs-7">
+          <label class="col-sm-12 col-md-4 control-label" for="firstword">Enter the words on your RSVP</label>
+          <div class="input-group col-sm-12 col-md-7">
             <span class="input-group-addon">respond-to.us/</span>
             <input ng-model = "invite.fw" ng-model-options = "{debounce:200}" type="text" class="form-control" placeholder="First word" required/>
             <span class="input-group-addon" style="border-left: 0; border-right: 0;">&ndash;</span>
@@ -95,17 +95,17 @@
         </div>
           
         <!-- errors-->
-         <div class="col-xs-7 col-xs-offset-4 alert alert-danger" ng-show="error">
+         <div class="col-sm-12 col-md-7 col-md-offset-4 alert alert-danger" ng-show="error">
             {{error}}
          </div>
                  <!-- errors-->
-         <div class="col-xs-7 col-xs-offset-4 alert alert-success" ng-show="exists">
+         <div class="col-sm-12 col-md-7 col-md-offset-4 alert alert-success" ng-show="exists">
             Thank you
          </div>
 
         <!-- Button -->
         <div class="form-group">
-          <div class="col-xs-4 col-xs-offset-4">
+          <div class="col-sm-12 col-md-7 col-md-offset-4">
             <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="submit" class="btn btn-primary" ng-if="!rsvpForm.$invalid && exists">Click to RSVP</a>
           </div>
         </div>
