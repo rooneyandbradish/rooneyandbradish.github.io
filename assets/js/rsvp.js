@@ -26,7 +26,7 @@
         rsvp.options = {};
         rsvp.fields = [];
 
-        var wordsRegex = /\?rsvp=([a-z]+-[a-z]+)/i;
+        var wordsRegex = /\?rsvp=([A-Za-z]+-[A-Za-z]+)/;
         if (angular.isDefined($window.location.search) && wordsRegex.test($window.location.search)){
             try {
                 var wordsId = wordsRegex.exec($window.location.search)[1].toLowerCase();
