@@ -60,7 +60,7 @@
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
                 noError(fw,sw)
               } else {
-                showError("I couldn't find an RSVP with " + fw + "-" + sw + " on it")
+                showError("I couldn't find an RSVP with <b>" + fw + "-" + sw + "</b> on it")
               }
             },
             function(error){
@@ -95,8 +95,7 @@
         </div>
           
         <!-- errors-->
-         <div class="col-sm-12 alert alert-danger" ng-show="error">
-            {{error}}
+         <div class="col-sm-12 alert alert-danger" ng-show="error" ng-bind-html="error">
          </div>
                  <!-- errors-->
          <div class="col-sm-12 alert alert-success" ng-show="exists">
