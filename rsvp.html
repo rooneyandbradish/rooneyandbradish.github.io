@@ -37,10 +37,24 @@
          =============================================== -->
     <script type="text/javascript" src="assets/js/libs/modernizr.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script>
+  angular.module('submit', [])
+    .controller('sumbitController', ['$scope', '$http', $location, function($scope) {
+      $scope.submit = function(fw,sw) {
+        $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+fw+"-"+sw)
+        .then(function(success){
+            $location.path("/?"+fw+"-"+sw"+#rsvp")
+            },
+              function(error){
+            $scope.error = "I can't find an RSVP with those words on it"
+        });
+      };
+    }]);
+</script>
   </head>
   <body>
     <div class = "container">
-      <form class="form-horizontal" method = "GET" action = "/">
+      <form name ="rsvpForm" class="form-horizontal" ng-controller = "submitController" ng-submit = "submit()">
         <fieldset>
 
         <!-- Two word form -->
@@ -51,16 +65,19 @@
           <label class="col-xs-4 control-label" for="firstword">Enter the words on your RSVP</label>
           <div class="input-group col-xs-6">
             <span class="input-group-addon">respond-to.us/</span>
-            <input name = "firstword" id = "firstword" type="text" class="form-control" placeholder="First word" />
+            <input ng-model = "fw" id = "firstword" type="text" class="form-control" placeholder="First word" required/>
             <span class="input-group-addon" style="border-left: 0; border-right: 0;">&ndash;</span>
-            <input name = "secondword" type="text" class="form-control" placeholder="Second word" />
+            <input ng-model = "sw" type="text" class="form-control" placeholder="Second word" required/>
           </div>
         </div>
 
         <!-- Button -->
         <div class="form-group">
           <div class="col-xs-4 col-xs-offset-4">
-            <button type="submit" class="btn btn-primary">RSVP</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="rsvpForm.$invalid">RSVP</button>
+          </div>
+           <div class="col-xs-4" ng-if = "error">
+            {{error}}
           </div>
         </div>
 
