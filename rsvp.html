@@ -44,21 +44,21 @@
         $scope.exists = false;
         $scope.error = text
       }
-      var noError = function(){
+      var noError = function(fw,sw){
         delete $scope.error
         $scope.exists = true
-        $window.location.href = '/?rsvp='+$scope.invite.fw+"-"+$scope.invite.sw+"#rsvp";
+        $window.location.href = '/?rsvp='+fw+"-"+sw+"#rsvp";
       }
       $scope.invite = {};
       var check = function (){
         if($scope.invite.fw && $scope.invite.sw){
-          var fw = $scope.invite.fw
-          var sw = $scope.invite.sw
+          var fw = $scope.invite.fw.toLowerCase()
+          var sw = $scope.invite.sw.toLowerCase()
           $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+fw+'-'+sw+'#rsvp')
           .then(
             function(success){
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
-                noError()
+                noError(fw,sw)
               } else {
                 showError("I couldn't find an RSVP with " + fw + "-" + sw + " on it")
               }
