@@ -40,9 +40,9 @@
     <script>
   angular.module('submit', [])
     .controller('submitController', ['$scope', '$http', '$window', function($scope,$http,$window) {
-      var showError = function(text){
+      var showError = function(t,e,xt){
         $scope.exists = false;
-        $scope.error = text
+        $scope.error ={start:t,middle:e,end:xt}
       }
       var noError = function(fw,sw){
         delete $scope.error
@@ -60,7 +60,7 @@
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
                 noError(fw,sw)
               } else {
-                showError("I couldn't find an RSVP with <b>" + fw + "-" + sw + "</b> on it")
+                showError("I couldn't find an RSVP with",fw + "-" + sw," on it")
               }
             },
             function(error){
@@ -95,7 +95,10 @@
         </div>
           
         <!-- errors-->
-         <div class="col-sm-12 alert alert-danger" ng-show="error" ng-bind-html="error">
+         <div class="col-sm-12 alert alert-danger" ng-show="error">
+           {{error.start}}
+           <b>{{error.middle}}</b>
+           {{error.end}}
          </div>
                  <!-- errors-->
          <div class="col-sm-12 alert alert-success" ng-show="exists">
