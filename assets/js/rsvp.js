@@ -26,10 +26,10 @@
         rsvp.options = {};
         rsvp.fields = [];
 
-        var wordsRegex = /\?rsvp=([a-z]+-[a-z]+)/;
+        var wordsRegex = /\?rsvp=([a-z]+-[a-z]+)/i;
         if (angular.isDefined($window.location.search) && wordsRegex.test($window.location.search)){
             try {
-                var wordsId = wordsRegex.exec($window.location.search)[1];
+                var wordsId = wordsRegex.exec($window.location.search)[1].toLowerCase();
                 $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId=' + wordsId)
                     .then(
                         function(success) {
