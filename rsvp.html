@@ -47,7 +47,7 @@
       var noError = function(){
         delete $scope.error
         $scope.exists = true
-        $window.location.href = '/?rsvp='+$scope.fw+"-"+$scope.sw+"#rsvp";
+        $window.location.href = '/?rsvp='+$scope.invite.fw+"-"+$scope.invite.sw+"#rsvp";
       }
       $scope.invite = {};
       var check = function (){
@@ -96,7 +96,10 @@
          <div class="col-xs-7 col-xs-offset-4 alert alert-danger" ng-show="error">
             {{error}}
          </div>
-          
+                 <!-- errors-->
+         <div class="col-xs-7 col-xs-offset-4 alert alert-success" ng-show="error">
+            "Thank you - just a few more questions!"
+         </div>
 
         <!-- Button -->
         <div class="form-group">
