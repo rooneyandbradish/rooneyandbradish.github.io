@@ -40,8 +40,17 @@
     <script>
   angular.module('submit', [])
     .controller('submitController', ['$scope', '$http', function($scope,$http) {
-      $scope.$watch('invite', function (tmpStr){
+      $scope.invite = {};
+      $scope.$watch('invite', function (){
         $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+$scope.invite.fw+$scope.invite.sw+'#rsvp')
+        .then(
+          function(success){
+            console.log("Yes" + success.data)
+          },
+          function(error){
+            console.log("No" + error)
+          }
+        )
       },true)
     }]);
 </script>
