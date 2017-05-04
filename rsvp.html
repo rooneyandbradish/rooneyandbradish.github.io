@@ -88,13 +88,16 @@
             <input ng-model = "invite.sw" ng-model-options = "{debounce:500}"type="text" class="form-control" placeholder="Second word" required/>
           </div>
         </div>
+          
+        <!-- errors-->
+         <div class="col-xs-4 col-xs-offset-4 alert alert-danger" ng-show="error">
+            {{error}}
+         </div>
+          
 
         <!-- Button -->
         <div class="form-group">
-          <div class="col-xs-4 col-xs-offset-4 alert alert-danger" ng-show = "error">
-            {{error}}
-          </div>
-          <div class="col-xs-2">
+          <div class="colcol-xs-4 col-xs-offset-4">
             <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="button" class="btn btn-primary" ng-disabled="rsvpForm.$invalid && exists" ng-click = "">RSVP</a>
           </div>
         </div>
