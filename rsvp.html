@@ -44,10 +44,12 @@
         if(fw && sw){
           $scope.error = ""
           $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+fw+"-"+sw)
-          .then(function(success){
-              $location.path("/?"+fw+"-"+sw+"#rsvp")
-              },
-                function(error){
+            .then(function(success){
+              if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
+                $location.path("/?"+fw+"-"+sw+"#rsvp")
+              }
+            },
+            function(error){
               $scope.error = "I can't find an RSVP with those words on it"
           });
         } else {
