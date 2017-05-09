@@ -6,7 +6,6 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
-        window.scope = $scope
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
@@ -172,8 +171,10 @@
                                                 className: 'col-xs-12',
                                                 type: 'radio',
                                                 key: 'travelArrangements',
+                                                expressionProperties:{
+                                                    "templateOptions.required":"!model.travelArrangements"
+                                                },
                                                 templateOptions :{
-                                                  required: true,
                                                   options:[
                                                     {
                                                       "name":"Car",
