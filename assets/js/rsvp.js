@@ -18,7 +18,7 @@
                 if(!rsvp.model.travelArrangements){
                     travel = true
                 }
-               rsvp.guidance += diets ? "Please fill in any dietary requirements" : ""
+               rsvp.guidance = diets ? "Please fill in any dietary requirements" : ""
                rsvp.guidance += diets && travel ? " and " : ""
                rsvp.guidance += travel && !diets ? "Please fill in " : ""
                rsvp.guidance += travel ? "your travel arrangements" : ""
