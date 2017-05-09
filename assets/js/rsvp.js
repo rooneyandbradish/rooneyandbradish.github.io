@@ -6,6 +6,11 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
+        $scope.checkForm = function(){
+            angular.forEach($scope.rsvpForm.$error.required, function(field) {
+                field.$setDirty();
+            });
+        }
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
