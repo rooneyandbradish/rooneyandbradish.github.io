@@ -144,7 +144,7 @@
                                                 hideExpression: "!model.saturdayCeremony || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''",
-                                                    "templateOptions.required": "model.dietaryRequirements.checked && (!model.name1 || !model.dietaryRequirements1) && model.saturdayCeremony"
+                                                    "templateOptions.required": "model.dietaryRequirements && (!model.name1 || !model.dietaryRequirements1) && model.saturdayCeremony"
                                                 }
                                             },
                                             {
@@ -154,7 +154,7 @@
                                                 hideExpression: "!model.saturdayCeremony || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1",
-                                                    "templateOptions.required": "model.dietaryRequirements.checked && model.name1 && model.saturdayCeremony && !model.dietaryRequirements0"
+                                                    "templateOptions.required": "model.dietaryRequirements && model.name1 && model.saturdayCeremony && !model.dietaryRequirements0"
                                                 }
                                             }
                                         ]
