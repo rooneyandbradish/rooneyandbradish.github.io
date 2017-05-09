@@ -302,7 +302,6 @@
                 Submit : {{submitSuccess}} : Success
                 <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitSuccess" >
                     <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
-                        <div ng-show = "rsvp.guidance"><small>{{rsvp.guidance}}</small></div>
                         <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid"><i class='fa fa-circle-o-notch fa-spin' ng-if="rsvp.submitting"></i>{{rsvp.submitMessage}}</button>
                     </formly-form>
                 </form>
