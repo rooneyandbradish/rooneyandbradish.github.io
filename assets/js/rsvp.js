@@ -181,7 +181,7 @@
                                                 className: 'col-xs-12',
                                                 validators: {
                                                   travelArrangements: {
-                                                    "Please let us know how you'll be getting to the wedding"
+                                                   message: "Please let us know how you'll be getting to the wedding"
                                                   }
                                                 },
                                                 type: 'radio',
