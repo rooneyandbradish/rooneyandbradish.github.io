@@ -196,10 +196,10 @@
                                                 type: 'radio',
                                                 key: 'travelArrangements',
                                                 expressionProperties:{
+                                                    "templateOptions.required" : "true",
                                                     "templateOptions.guidance": function($viewValue, $modelValue, scope) {
                                                         return checkGuidance($viewValue,$modelValue,scope)
-                                                    },
-                                                    "templateOptions.required" : true
+                                                    }
                                                 },
                                                 templateOptions :{
                                                   options:[
