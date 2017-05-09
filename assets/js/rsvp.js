@@ -2,11 +2,7 @@
 (function() {
     'use strict';
 
-    var app = angular.module('weddingApp', ['formly', 'formlyBootstrap', 'ngMessages']);
-    app.run(function(formlyConfig, formlyValidationMessages) {
-        formlyConfig.extras.ngModelAttrsManipulatorPreferBound = true;
-        formlyValidationMessages.addStringMessage('required', 'Go on... fill it in!');
-    });
+    var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
         var scrollToRSVP = function(){
@@ -47,6 +43,8 @@
                                 }
                                 rsvp.inviteId = data.inviteId;
                                 rsvp.fields = [
+                                    validators: {
+                                    },
                                     {
                                         className: 'row',
                                         template: '<div><h2>Hi, {{model.name0}}{{model.name1? " & " + model.name1 : ""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you would like":"Please let us know if you can come"}}</div>'
