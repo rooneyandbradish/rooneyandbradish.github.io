@@ -5,10 +5,24 @@
     var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
-        var checkGuidance = function(a,b,c){
-            console.log(a)
-            console.log(b)
-            console.log(c)
+        var checkGuidance = function(){
+           var diets = false
+           var travel = false
+           if(rsvp.model.saturdayCeremony){
+               if(rsvp.model.dietaryRequirements){
+                    if((!rsvp.model.name1 && !rsvp.model.dietaryRequirements0) ||
+                       (rsvp.model.name1 && !rsvp.model.dietaryRequirements0 && !rsvp.model.dietaryRequirements0)){
+                        diets = true
+                    }
+                }
+                if(!rsvp.model.travelArrangements){
+                    travel = true
+                }
+               rsvp.guidance = diets ? "Please fill in any dietary requirements" : ""
+               rsvp.guidance += diets && travel ? " and " : ""
+               rsvp.guidance += travel && !diets ? "Please fill in " : ""
+               rsvp.guidance += travel ? " your travel arrangements" : ""
+           }
         }
         var scrollToRSVP = function(){
             $timeout(function(){
