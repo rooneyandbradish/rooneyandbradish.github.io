@@ -2,8 +2,11 @@
 (function() {
     'use strict';
 
-    var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
-
+    var app = angular.module('weddingApp', ['formly', 'formlyBootstrap', 'ngMessages']);
+    app.run(function(formlyConfig, formlyValidationMessages) {
+        formlyConfig.extras.ngModelAttrsManipulatorPreferBound = true;
+        formlyValidationMessages.addStringMessage('required', 'Go on... fill it in!');
+    });
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
         var scrollToRSVP = function(){
