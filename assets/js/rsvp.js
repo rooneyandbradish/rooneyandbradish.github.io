@@ -141,6 +141,11 @@
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements0',
+                                                validators: {
+                                                  dietaryRequirements0: {
+                                                    message: "Please let us know your dietary requirements"
+                                                  }
+                                                },
                                                 hideExpression: "!model.saturdayCeremony || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''",
@@ -151,6 +156,11 @@
                                                 className: 'col-xs-12 col-sm-6',
                                                 type: 'input',
                                                 key: 'dietaryRequirements1',
+                                                validators: {
+                                                  dietaryRequirements1: {
+                                                    message: "Please let us know your dietary requirements"
+                                                  }
+                                                },
                                                 hideExpression: "!model.saturdayCeremony || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1",
@@ -169,6 +179,11 @@
                                         hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
+                                                validators: {
+                                                  travelArrangements: {
+                                                    "Please let us know how you'll be getting to the wedding"
+                                                  }
+                                                },
                                                 type: 'radio',
                                                 key: 'travelArrangements',
                                                 templateOptions :{
