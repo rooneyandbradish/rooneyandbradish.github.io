@@ -7,6 +7,7 @@
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
         $scope.checkForm = function(theForm){
+            console.log("tried")
             angular.forEach(theForm.$error.required, function(field) {
                 field.$setDirty();
             });
