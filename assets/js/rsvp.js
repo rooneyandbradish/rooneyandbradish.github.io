@@ -162,7 +162,7 @@
                                     {
                                         className: 'section-label',
                                         hideExpression: '!model.saturdayCeremony',
-                                        template: '<hr /><div><strong>Travel</strong></div>',
+                                        template: '<hr /><div><strong>Travel<sup>*</sup></strong> (best guess)</div>',
                                     },
                                     {
                                         className: 'row',
@@ -171,9 +171,6 @@
                                                 className: 'col-xs-12',
                                                 type: 'radio',
                                                 key: 'travelArrangements',
-                                                expressionProperties:{
-                                                    "templateOptions.required":"!model.travelArrangements"
-                                                },
                                                 templateOptions :{
                                                   options:[
                                                     {
