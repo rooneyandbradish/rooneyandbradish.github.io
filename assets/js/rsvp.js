@@ -5,6 +5,11 @@
     var app = angular.module('weddingApp', ['formly', 'formlyBootstrap']);
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
+        var checkGuidance = function(a,b,c){
+            console.log(a)
+            console.log(b)
+            console.log(c)
+        }
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
@@ -43,8 +48,6 @@
                                 }
                                 rsvp.inviteId = data.inviteId;
                                 rsvp.fields = [
-                                    validators: {
-                                    },
                                     {
                                         className: 'row',
                                         template: '<div><h2>Hi, {{model.name0}}{{model.name1? " & " + model.name1 : ""}}</h2>{{model.submitted?"Thanks for responding - you can update your response if you would like":"Please let us know if you can come"}}</div>'
@@ -62,7 +65,6 @@
                                                     "templateOptions.label": function($viewValue, $modelValue, scope) {
                                                         return (scope.model.name1 ? "We" : "I") + "'ll be there!"
                                                     }
-                                                }
                                             }
                                         ]
                                     },
@@ -145,7 +147,10 @@
                                                 hideExpression: "!model.saturdayCeremony || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1?model.name0:''",
-                                                    "templateOptions.required": "model.dietaryRequirements && (!model.name1 || !model.dietaryRequirements1) && model.saturdayCeremony"
+                                                    "templateOptions.required": "model.dietaryRequirements && (!model.name1 || !model.dietaryRequirements1) && model.saturdayCeremony",
+                                                    "templateOptions.guidance": function($viewValue, $modelValue, scope) {
+                                                        return checkGuidance($viewValue,$modelValue,scope)
+                                                    }
                                                 }
                                             },
                                             {
@@ -155,7 +160,11 @@
                                                 hideExpression: "!model.saturdayCeremony || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
                                                     "templateOptions.label": "model.name1",
-                                                    "templateOptions.required": "model.dietaryRequirements && model.name1 && model.saturdayCeremony && !model.dietaryRequirements0"
+                                                    "templateOptions.required": "model.dietaryRequirements && model.name1 && model.saturdayCeremony && !model.dietaryRequirements0",
+                                                    "templateOptions.guidance": function($viewValue, $modelValue, scope) {
+                                                        return checkGuidance($viewValue,$modelValue,scope)
+                                                    }
+                                                }
                                                 }
                                             }
                                         ]
@@ -172,6 +181,11 @@
                                                 className: 'col-xs-12',
                                                 type: 'radio',
                                                 key: 'travelArrangements',
+                                                expressionProperties:{
+                                                    "templateOptions.guidance": function($viewValue, $modelValue, scope) {
+                                                        return checkGuidance($viewValue,$modelValue,scope)
+                                                    }
+                                                },
                                                 templateOptions :{
                                                   options:[
                                                     {
