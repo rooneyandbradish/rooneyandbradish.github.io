@@ -6,8 +6,8 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
-        $scope.checkForm = function(){
-            angular.forEach($scope.rsvp.form.$error.required, function(field) {
+        $scope.checkForm = function(theForm){
+            angular.forEach(theForm.$error.required, function(field) {
                 field.$setDirty();
             });
         }
