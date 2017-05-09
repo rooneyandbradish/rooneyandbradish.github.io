@@ -143,7 +143,8 @@
                                                 key: 'dietaryRequirements0',
                                                 hideExpression: "!model.saturdayCeremony || !model.dietaryRequirements",
                                                 expressionProperties: {
-                                                    "templateOptions.label": "model.name1?model.name0:''"
+                                                    "templateOptions.label": "model.name1?model.name0:''",
+                                                    "templateOptions.required": "model.dietaryRequirements.checked && (!model.name1 || !model.dietaryRequirements1) && model.saturdayCeremony"
                                                 }
                                             },
                                             {
@@ -152,7 +153,8 @@
                                                 key: 'dietaryRequirements1',
                                                 hideExpression: "!model.saturdayCeremony || !model.name1 || !model.dietaryRequirements",
                                                 expressionProperties: {
-                                                    "templateOptions.label": "model.name1"
+                                                    "templateOptions.label": "model.name1",
+                                                    "templateOptions.required": "model.dietaryRequirements.checked && model.name1 && model.saturdayCeremony && !model.dietaryRequirements0"
                                                 }
                                             }
                                         ]
@@ -170,6 +172,7 @@
                                                 type: 'radio',
                                                 key: 'travelArrangements',
                                                 templateOptions :{
+                                                  required: true,
                                                   options:[
                                                     {
                                                       "name":"Car",
