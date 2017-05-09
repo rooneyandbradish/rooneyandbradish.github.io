@@ -11,7 +11,7 @@
            if(rsvp.model.saturdayCeremony){
                if(rsvp.model.dietaryRequirements){
                     if((!rsvp.model.name1 && !rsvp.model.dietaryRequirements0) ||
-                       (rsvp.model.name1 && !rsvp.model.dietaryRequirements0 && !rsvp.model.dietaryRequirements0)){
+                       (rsvp.model.name1 && !rsvp.model.dietaryRequirements0 && !rsvp.model.dietaryRequirements1)){
                         diets = true
                     }
                 }
@@ -198,7 +198,8 @@
                                                 expressionProperties:{
                                                     "templateOptions.guidance": function($viewValue, $modelValue, scope) {
                                                         return checkGuidance($viewValue,$modelValue,scope)
-                                                    }
+                                                    },
+                                                    "templateOptions.required" : true
                                                 },
                                                 templateOptions :{
                                                   options:[
