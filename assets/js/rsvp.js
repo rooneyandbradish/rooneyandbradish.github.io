@@ -6,9 +6,6 @@
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
         var checkGuidance = function(){
-           rsvp.guidance = "yes"
-           window.scope = $scope
-           console.log("called")
            var diets = false
            var travel = false
            if(rsvp.model.saturdayCeremony){
@@ -21,11 +18,10 @@
                 if(!rsvp.model.travelArrangements){
                     travel = true
                 }
-               rsvp.guidance = "lovely: "
                rsvp.guidance += diets ? "Please fill in any dietary requirements" : ""
                rsvp.guidance += diets && travel ? " and " : ""
                rsvp.guidance += travel && !diets ? "Please fill in " : ""
-               rsvp.guidance += travel ? " your travel arrangements" : ""
+               rsvp.guidance += travel ? "your travel arrangements" : ""
            }
         }
         var scrollToRSVP = function(){
