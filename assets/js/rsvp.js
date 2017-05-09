@@ -179,11 +179,6 @@
                                         hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
-                                                validators: {
-                                                  travelArrangements: {
-                                                   message: "Please let us know how you'll be getting to the wedding"
-                                                  }
-                                                },
                                                 type: 'radio',
                                                 key: 'travelArrangements',
                                                 templateOptions :{
