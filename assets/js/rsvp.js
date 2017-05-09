@@ -6,6 +6,7 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
+        window.scope = $scope
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
