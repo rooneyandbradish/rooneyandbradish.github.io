@@ -6,12 +6,6 @@
 
 
     app.controller('RSVPCtrl', function($window, $http, $scope, $timeout, $anchorScroll) {
-        $scope.checkForm = function(theForm){
-            console.log("tried")
-            angular.forEach(theForm.$error.required, function(field) {
-                field.$setDirty();
-            });
-        }
         var scrollToRSVP = function(){
             $timeout(function(){
                 $anchorScroll("rsvp")
@@ -133,6 +127,14 @@
                                     },
                                     {
                                         className: 'row',
+                                        validators: {
+                                          dietaryRequirements0: {
+                                            message: "Please let us know your dietary requirements"
+                                          },
+                                          dietaryRequirements1: {
+                                            message: "Please let us know your dietary requirements"
+                                          }
+                                        },
                                         fieldGroup: [
                                           {
                                                 className: 'col-xs-12',
@@ -172,6 +174,11 @@
                                     },
                                     {
                                         className: 'row',
+                                        validators: {
+                                          travelArrangements: {
+                                            message: "Please let us know how you'll be getting here"
+                                          }
+                                        },
                                         hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
