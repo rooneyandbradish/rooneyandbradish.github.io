@@ -166,7 +166,6 @@
                                                         return checkGuidance($viewValue,$modelValue,scope)
                                                     }
                                                 }
-                                                }
                                             }
                                         ]
                                     },
