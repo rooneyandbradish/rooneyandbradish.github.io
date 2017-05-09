@@ -65,6 +65,7 @@
                                                     "templateOptions.label": function($viewValue, $modelValue, scope) {
                                                         return (scope.model.name1 ? "We" : "I") + "'ll be there!"
                                                     }
+                                                }
                                             }
                                         ]
                                     },
