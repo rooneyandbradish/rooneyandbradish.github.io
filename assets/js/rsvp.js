@@ -127,14 +127,6 @@
                                     },
                                     {
                                         className: 'row',
-                                        validators: {
-                                          dietaryRequirements0: {
-                                            message: "Please let us know your dietary requirements"
-                                          },
-                                          dietaryRequirements1: {
-                                            message: "Please let us know your dietary requirements"
-                                          }
-                                        },
                                         fieldGroup: [
                                           {
                                                 className: 'col-xs-12',
@@ -174,11 +166,6 @@
                                     },
                                     {
                                         className: 'row',
-                                        validators: {
-                                          travelArrangements: {
-                                            message: "Please let us know how you'll be getting here"
-                                          }
-                                        },
                                         hideExpression: '!model.saturdayCeremony',
                                         fieldGroup: [{
                                                 className: 'col-xs-12',
