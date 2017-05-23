@@ -59,7 +59,6 @@
                                 if(data.names){
                                     rsvp.model.name0 = data.names.name0;
                                     rsvp.model.name1 = data.names.name1;
-                                    rsvp.model.nameString = data.names.name0 + (data.names.name1 ? " & " + data.names.name1 : "")
                                 }
                                 rsvp.inviteId = data.inviteId;
                                 rsvp.fields = [
