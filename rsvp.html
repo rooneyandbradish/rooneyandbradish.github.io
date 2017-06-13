@@ -52,11 +52,13 @@
       $scope.invite = {};
       var check = function (){
         if($scope.invite.fw && $scope.invite.sw){
+          $scope.checking = true;
           var fw = $scope.invite.fw.toLowerCase()
           var sw = $scope.invite.sw.toLowerCase()
           $http.get('https://4a2wvla6l6.execute-api.eu-west-1.amazonaws.com/prod/rsvpHandler?wordsId='+fw+'-'+sw+'#rsvp')
           .then(
             function(success){
+              $scope.checking = false
               if(angular.isDefined(success.data) && angular.isDefined(success.data.Items[0])){
                 noError(fw,sw)
               } else {
@@ -64,6 +66,7 @@
               }
             },
             function(error){
+              $scope.checking = false
               console.log("No" + error)
               showError("I couldn't look up your RSVP sorry.")
             }
@@ -93,14 +96,16 @@
             <input ng-model = "invite.sw" ng-model-options = "{debounce:200}"type="text" class="form-control" placeholder="Second word" required/>
           </div>
         </div>
-          
-        <!-- errors-->
+        <div class = "col-sm-12 alert alert-default" ng-show = "checking">
+          Checking
+        </div>
+        <!-- errors -->
          <div class="col-sm-12 alert alert-danger" ng-show="error">
            {{error.start}}
            <b>{{error.middle}}</b>
            {{error.end}}
          </div>
-                 <!-- errors-->
+        <!-- success -->
          <div class="col-sm-12 alert alert-success" ng-show="exists">
             Thank you
          </div>
