@@ -96,9 +96,6 @@
             <input ng-model = "invite.sw" ng-model-options = "{debounce:200}"type="text" class="form-control" placeholder="Second word" required/>
           </div>
         </div>
-        <div class = "col-sm-12 alert alert-info" ng-show = "checking">
-          Checking
-        </div>
         <!-- errors -->
          <div class="col-sm-12 alert alert-danger" ng-show="error">
            {{error.start}}
@@ -116,7 +113,10 @@
             <a href = "/?rsvp={{invite.fw}}-{{invite.sw}}#rsvp" type="submit" class="btn btn-primary" ng-if="!rsvpForm.$invalid && exists">Click to RSVP</a>
           </div>
         </div>
-
+          <!-- checking -->
+        <div class = "col-sm-12 alert alert-info" ng-show = "checking">
+          Checking
+        </div>
         </fieldset>
       </form>
     </div>
