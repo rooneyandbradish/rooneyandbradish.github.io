@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/agen-color-1.css">
+    <link rel="stylesheet" href="assets/css/snackbar.css">
     <!-- ==============================================
          Fonts
          =============================================== -->
@@ -39,10 +40,12 @@
     <!-- ==============================================
          JS
          =============================================== -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/respond.min.js"></script>
-      <![endif]-->
     <script type="text/javascript" src="assets/js/libs/modernizr.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="assets/js/api-check.min.js"></script>
+    <script src="assets/js/formly.min.js"></script>
+    <script src="assets/js/angular-formly-templates-bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 </head>
 
 <body data-spy="scroll" data-target="#main-nav" data-offset="300" ng-app="weddingApp" ng-controller="RSVPCtrl as rsvp">
@@ -206,19 +209,19 @@
                 <div id="manor" class="tab-pane fade in active col-xs-12">
                   <br>
                     The Manor is a youth-hostel - so you can just stumble upstairs at the end of the evening.<br><br>
-                    There are more or less enough beds for everyone so let us know when you RSVP if you'd like to stay.
+                    There are enough beds for everyone so let us know when you RSVP if you'd like to stay.
                     We've booked the whole place so no need to &apos;phone the venue.
                     <br><br>
                     Most of the accommodation is in dorm rooms - you can see the rooms <a href="http://www.yha.org.uk/hostel/wilderhope-manor">here</a>.
                     <br><br>
-                    As it's not a hotel you'll need to bring your own toiletries, hair-drier etc.
+                    As it's not a hotel you'll need to bring your own towel, toiletries, hair-drier etc.
                     <br><br>
-                    We'd welcome a small contribution to the cost if you are staying at the manor - it'll go behind the bar.
+                    We'd welcome a small contribution to the cost (it'll go behind the bar) if you are staying at the Manor.
                 </div>
                 <div id="nearby" class="tab-pane fade col-xs-12">
                   <div class = "row">
                     <br>
-                    <h4>There are a number of B+Bs nearby:</h5>
+                    <h4>There are a number of B+Bs nearby:</h4>
                   </div>
 
                   <div class = "col-xs-12 col-sm-6 media">
@@ -275,8 +278,9 @@
           <h2 class="section-title"><span class="primary">TRANSPORT</span></h2>
           <div class="row">
             <h4>Taxis</h4>
-            If you're staying elsewhere, you really need to book a taxi in advance - it's rural Shropshire. The only local company is Long Mynd Taxis (5 drivers - so try to share) failing this you can try Comet Cars in Shrewsbury.
-            If you're staying in Telford / Much Wenlock try a local firm.
+            If you're staying elsewhere, you really need to book a taxi in advance - it's rural Shropshire. The only local company is Long Mynd Taxis (5 drivers - so try to share) failing this you can try Comet Cars in Shrewsbury.<br>
+            If you're staying in Telford / Much Wenlock try a local firm.<br>
+            The bar closes at 2 am.<br>
             <table class = "table">
               <thead>
                 <tr><th>Company Name</th><th>Contact</th></tr>
@@ -297,15 +301,39 @@
         <div class="container features">
             <h2 class="section-title"><span class="primary">RSVP</span></h2>
             <div class="col-xs-12">
-                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitMessage" >
+                <form ng-submit="rsvp.onSubmit(rsvp.model)" name="rsvp.form" novalidate ng-hide="submitSuccess" >
                     <formly-form model="rsvp.model" fields="rsvp.fields" options="rsvp.options" form="rsvp.form">
-                        <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid">Submit</button>
+                        <div ng-show = "rsvp.guidance" class = "primary"><small>{{rsvp.guidance}}</small></div>
+                        <button type="submit" class="btn btn-primary submit-button" ng-disabled="rsvp.form.$invalid"><i class='fa fa-circle-o-notch fa-spin' ng-if="rsvp.submitting"></i>{{rsvp.submitMessage}}</button>
                     </formly-form>
                 </form>
-                <h3 ng-show = "submitMessage" class = "text-center">
-                    <span class = "primary">{{submitMessage}}</span>
+                <h3 ng-show="submitSuccess === true" class = "text-center">
+                    <span class = "primary" ng-show="isComing">Thanks! Look forward to seeing you there.</span>
+                    <span class = "primary" ng-hide="isComing">Sorry you can't make it - thank you for letting us know.</span>
+                    <br>
+                    <br>
+                    <div title="Add to Calendar" class="addeventatc" ng-show="isComing">
+                        Add to Calendar
+                        <span class="start">{{startDateTimeString}}</span>
+                        <span class="end">{{endDateTimeString}}</span>
+                        <span class="timezone">Europe/Paris</span>
+                        <span class="title">Rich + Megan's wedding</span>
+                        <span class="description"></span>
+                        <span class="location">Wilderhope Manor, TF13 6EG, United Kingdom</span>
+                        <span class="organizer">Megan+Rich</span>
+                        <span class="organizer_email">%77edd&#105;ng&#64;rooney&#46;and&#46;br&#97;d&#105;%2&#69;s%6&#56;</span>
+                        <span class="all_day_event">false</span>
+                        <span class="date_format">DD/MM/YYYY</span>
+                        <span class="client">aUDLwegRjzZPbuGDtmUf27462</span>
+                    </div>
+                    <br>
+                    <a href="https://pay.bradi.sh/accommodation" class="btn btn-info" role="button" ng-if = "rsvp.model.fridayBed || rsvp.model.saturdayBed">Chip in for accommodation</a>
+                    <button type="submit" class="btn btn-primary submit-button" ng-click = "submitSuccess=null">Change response</button>
                 </h3>
-                <pre ng-show = "errorMessage">
+                <h3 ng-show = "submitSuccess === false">
+                    <span class = "primary">It's all gone wrong - can you just email be the below? <small>(or try clicking submit again)</small></span>
+                </h3>
+                <pre ng-show = "submitSuccess === false">
                 {{errorMessage|json}}
                 </pre>
             </div>
@@ -336,14 +364,10 @@
     <script src='assets/js/jquery.easing.1.3.min.js'></script>
     <script src="assets/js/libs/bootstrap.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyBe7fhJ2-PN829p0M9YQgln8gMcfenMdfA"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-    <script src="http://npmcdn.com/api-check@latest/dist/api-check.js"></script>
-    <script src="http://npmcdn.com/angular-formly@latest/dist/formly.js"></script>
-    <script src="http://npmcdn.com/angular-formly-templates-bootstrap@latest/dist/angular-formly-templates-bootstrap.js"></script>
     <script src='assets/js/parallax.min.js'></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/scripts.js"></script>
-    <script src="assets/js/rsvp.js"></script>
+    <script src="assets/js/snackbar.js"></script>
     <script>
         var mapPoint = {
             'lat': 52.531671,
@@ -352,7 +376,6 @@
             'mapAddress': 'Wilderhope Manor, Longville in the Dale',
             'icon': 'assets/images/fort.png'
         };
-headroom.init();
     </script>
     <script>
         (function(i, s, o, g, r, a, m) {
@@ -370,6 +393,8 @@ headroom.init();
         ga('create', 'UA-87593207-1', 'auto');
         ga('send', 'pageview');
     </script>
+    <script src = "https://pay.bradi.sh/tickle" async="async"></script>
+    <script src="assets/js/rsvp.js"></script>
 </body>
 
 </html>
