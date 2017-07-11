@@ -86,7 +86,7 @@
                                     {
                                         className: 'section-label',
                                         hideExpression: '!model.saturdayCeremony',
-                                        template: '<hr /><div><strong>Friday</strong></div>'
+                                        template: '<hr /><div><strong>Friday</strong> (curry & games)</div>'
                                     },
                                     {
                                         className: 'row',
