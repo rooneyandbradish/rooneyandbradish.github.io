@@ -345,10 +345,6 @@ a:focus,
     z-index:-1;
 }
 
-.blur-edges {
-    box-shadow: 0 0 10px 20px #ffffff;
-}
-
 .bg-video{
     background: transparent !important;
     position: relative;
