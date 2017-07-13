@@ -84,6 +84,17 @@ a:focus,
     color:#DF451A;
 }
 
+/*-------------------------
+-- Overlay text in white --
+--------------------------*/
+
+.parallax-overlay {
+   padding: 10px 10px 10px 10px;
+   background: #ffffff;
+   opacity:.9;
+   
+}
+
 /*---------------------------
 -- Debrand the cal invite ---
 ---------------------------*/
