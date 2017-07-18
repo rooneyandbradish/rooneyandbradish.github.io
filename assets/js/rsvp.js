@@ -78,7 +78,10 @@
                                                 expressionProperties: {
                                                     "templateOptions.label": function($viewValue, $modelValue, scope) {
                                                         return (scope.model.name1 ? "We" : "I") + "'ll be there!"
-                                                    }
+                                                    },
+                                                    "templateOptions.guidance": function($viewValue, $modelValue, scope) {
+                                                        return checkGuidance($viewValue,$modelValue,scope)
+                                                    }  
                                                 }
                                             }
                                         ]
