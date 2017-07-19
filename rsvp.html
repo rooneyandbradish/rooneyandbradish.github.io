@@ -96,9 +96,6 @@
             <input ng-model = "invite.sw" ng-model-options = "{debounce:200}"type="text" class="form-control" placeholder="Second word" required/>
           </div>
         </div>
-        <div class = "col-xs-12">
-          <small>You should find your link in the "RSVP" section at the bottom of the second page of information that accompanies your invite</small>
-        </div>
         <!-- errors -->
          <div class="col-sm-12 alert alert-danger" ng-show="error">
            {{error.start}}
@@ -122,6 +119,9 @@
         </div>
         </fieldset>
       </form>
+      <div class = "col-xs-12">
+        <small>You should find your link in the "RSVP" section at the bottom of the second page of information that accompanies your invite</small>
+      </div>
     </div>
         <script>
         (function(i, s, o, g, r, a, m) {
